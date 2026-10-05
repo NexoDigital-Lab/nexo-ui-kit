@@ -1,0 +1,100 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'cyan' | 'purple' | 'magenta' | 'brand';
+  intensity?: 'subtle' | 'normal' | 'strong';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  size = 'md',
+  variant = 'brand',
+  intensity = 'normal',
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<div
+  class:list={['nx-glow-orb', `s-${size}`, `v-${variant}`, `i-${intensity}`, className]}
+  aria-hidden="true"
+  {...rest}
+></div>
+
+<style>
+  .nx-glow-orb {
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .s-sm {
+    width: 120px;
+    height: 120px;
+  }
+
+  .s-md {
+    width: 220px;
+    height: 220px;
+  }
+
+  .s-lg {
+    width: 360px;
+    height: 360px;
+  }
+
+  .s-xl {
+    width: 520px;
+    height: 520px;
+  }
+
+  .v-cyan {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--nx-cyan) 55%, transparent) 0%,
+      color-mix(in srgb, var(--nx-cyan) 18%, transparent) 42%,
+      transparent 70%
+    );
+  }
+
+  .v-purple {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--nx-purple) 55%, transparent) 0%,
+      color-mix(in srgb, var(--nx-purple) 18%, transparent) 42%,
+      transparent 70%
+    );
+  }
+
+  .v-magenta {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--nx-magenta) 55%, transparent) 0%,
+      color-mix(in srgb, var(--nx-magenta) 18%, transparent) 42%,
+      transparent 70%
+    );
+  }
+
+  .v-brand {
+    background: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--nx-cyan) 50%, transparent) 0%,
+      color-mix(in srgb, var(--nx-purple) 28%, transparent) 40%,
+      color-mix(in srgb, var(--nx-magenta) 12%, transparent) 60%,
+      transparent 75%
+    );
+  }
+
+  .i-subtle {
+    opacity: 0.35;
+  }
+
+  .i-normal {
+    opacity: 0.55;
+  }
+
+  .i-strong {
+    opacity: 0.8;
+  }
+</style>

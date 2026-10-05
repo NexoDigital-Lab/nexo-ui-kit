@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import GlowOrb from '../../components/GlowOrb.astro';
+import ParticleField from '../../components/ParticleField.astro';
+
+const sizes = ['sm', 'md', 'lg', 'xl'] as const;
+const variants = ['cyan', 'purple', 'magenta', 'brand'] as const;
+const intensities = ['subtle', 'normal', 'strong'] as const;
+
+const glowSnippet = `<GlowOrb size="lg" variant="cyan" intensity="subtle" />
+
+<!-- Posicionar con tu propio wrapper -->
+<div style="position: relative; overflow: hidden;">
+  <GlowOrb
+    size="xl"
+    variant="brand"
+    style="position: absolute; top: -120px; left: 50%; transform: translateX(-50%);"
+  />
+  <h1>Contenido del hero</h1>
+</div>`;
+
+const particleSnippet = `<div style="position: relative; height: 400px;">
+  <ParticleField density={0.00004} speed={0.3} />
+</div>`;
+
+const glassSnippet = `.nx-glass-panel {
+  padding: var(--nx-space-6);
+  border-radius: var(--nx-radius-xl);
+  background: color-mix(in srgb, var(--nx-bg-card) 55%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--nx-border);
+}`;
+---
+
+<BaseLayout
+  title="Background — Nexo UI Kit"
+  description="Elementos decorativos de fondo de Nexo UI Kit: orbes de resplandor, campo de partículas, texto con degradado y glassmorfismo."
+>
+  <SectionHeader
+    badge="Componentes"
+    title="Background"
+    subtitle="Elementos decorativos de fondo: orbes de resplandor, campo de partículas animado, texto con degradado y paneles glassmorphism."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">GlowOrb</h2>
+    <p class="docs-note">
+      Orbe de resplandor radial decorativo. Es puramente visual: se renderiza con
+      <code class="docs-inline-code">aria-hidden="true"</code> y el llamador lo posiciona con su propio
+      contenedor (<code class="docs-inline-code">position: absolute</code> o
+      <code class="docs-inline-code">fixed</code> más inset).
+    </p>
+    <div class="docs-example docs-example-stack glow-panel">
+      <p class="docs-example-label">Tamaños</p>
+      <div class="glow-row">
+        {
+          sizes.map((size) => (
+            <div class="glow-cell">
+              <p class="docs-example-label">{size}</p>
+              <div class="glow-box">
+                <GlowOrb size={size} variant="cyan" />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="docs-example-label">Variantes de color</p>
+      <div class="glow-row">
+        {
+          variants.map((variant) => (
+            <div class="glow-cell">
+              <p class="docs-example-label">{variant}</p>
+              <div class="glow-box">
+                <GlowOrb size="md" variant={variant} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="docs-example-label">Intensidad</p>
+      <div class="glow-row">
+        {
+          intensities.map((intensity) => (
+            <div class="glow-cell">
+              <p class="docs-example-label">{intensity}</p>
+              <div class="glow-box">
+                <GlowOrb size="lg" variant="brand" intensity={intensity} />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Texto con degradado</h2>
+    <p class="docs-note">
+      La utilidad global <code class="docs-inline-code">.nx-gradient-text</code> aplica el degradado de marca
+      (<code class="docs-inline-code">--nx-gradient-main</code>) al texto mediante
+      <code class="docs-inline-code">background-clip: text</code>. No es un componente: se aplica como clase CSS.
+    </p>
+    <div class="docs-example">
+      <p class="gradient-demo nx-gradient-text">Nexo UI Kit — degradado de marca</p>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Campo de partículas</h2>
+    <div class="docs-example docs-example-stack">
+      <p class="docs-example-label">Demo en vivo</p>
+      <div class="particle-box">
+        <ParticleField />
+      </div>
+      <p class="docs-note">
+        Red de puntos conectados por líneas cuando están cerca. El script respeta
+        <code class="docs-inline-code">prefers-reduced-motion: reduce</code>: en ese caso dibuja un único
+        fotograma estático (partículas y conexiones) y no anima.
+      </p>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Glassmorfismo</h2>
+    <p class="docs-note">
+      Receta de panel translúcido con desenfoque de fondo
+      (<code class="docs-inline-code">backdrop-filter</code>). Útil sobre heroes, barras de estadísticas o
+      superposiciones. El demo coloca el panel sobre un fondo con glow para que el blur sea visible.
+    </p>
+    <div class="docs-example docs-example-stack">
+      <p class="docs-example-label">Demo — panel sobre fondo con glow</p>
+      <div class="glass-stage">
+        <GlowOrb class="glass-orb glass-orb-a" size="xl" variant="cyan" />
+        <GlowOrb class="glass-orb glass-orb-b" size="lg" variant="magenta" />
+        <GlowOrb class="glass-orb glass-orb-c" size="md" variant="purple" />
+        <div class="glass-panel">
+          <p class="glass-panel-title">Panel glassmorphism</p>
+          <p class="glass-panel-text">
+            Superficie translúcida con desenfoque de 16px, fondo basado en tokens y borde sutil.
+          </p>
+        </div>
+      </div>
+    </div>
+    <pre class="docs-code"><code>{glassSnippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Uso</h2>
+    <p class="docs-example-label">GlowOrb</p>
+    <pre class="docs-code"><code>{glowSnippet}</code></pre>
+    <p class="docs-example-label" style="margin-top: var(--nx-space-5);">ParticleField</p>
+    <pre class="docs-code"><code>{particleSnippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <h3 class="docs-h3">GlowOrb</h3>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>size</code></td>
+            <td><code>'sm' | 'md' | 'lg' | 'xl'</code></td>
+            <td><code>'md'</code></td>
+            <td>Tamaño del orbe: 120, 220, 360 o 520 px de diámetro.</td>
+          </tr>
+          <tr>
+            <td><code>variant</code></td>
+            <td><code>'cyan' | 'purple' | 'magenta' | 'brand'</code></td>
+            <td><code>'brand'</code></td>
+            <td>Color del degradado radial. <code>brand</code> mezcla cyan, purple y magenta.</td>
+          </tr>
+          <tr>
+            <td><code>intensity</code></td>
+            <td><code>'subtle' | 'normal' | 'strong'</code></td>
+            <td><code>'normal'</code></td>
+            <td>Opacidad del resplandor (0.35, 0.55 o 0.8).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="docs-h3" style="margin-top: var(--nx-space-8);">ParticleField</h3>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>density</code></td>
+            <td><code>number</code></td>
+            <td><code>0.00004</code></td>
+            <td>Partículas por píxel cuadrado del área del canvas.</td>
+          </tr>
+          <tr>
+            <td><code>speed</code></td>
+            <td><code>number</code></td>
+            <td><code>0.3</code></td>
+            <td>Velocidad de desplazamiento de cada partícula por fotograma.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .glow-panel {
+    background: var(--nx-bg-primary);
+  }
+
+  .glow-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nx-space-4);
+    width: 100%;
+  }
+
+  .glow-cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-2);
+    min-width: 130px;
+  }
+
+  .glow-box {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .glow-box :global(.nx-glow-orb) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .gradient-demo {
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-xl);
+    font-weight: var(--nx-weight-extrabold);
+  }
+
+  .particle-box {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border-radius: var(--nx-radius-lg);
+    border: 1px solid var(--nx-border);
+    background: var(--nx-bg-secondary);
+    overflow: hidden;
+  }
+
+  .glass-stage {
+    position: relative;
+    width: 100%;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--nx-radius-lg);
+    border: 1px solid var(--nx-border);
+    background: var(--nx-bg-primary);
+    overflow: hidden;
+  }
+
+  .glass-stage :global(.glass-orb) {
+    position: absolute;
+  }
+
+  .glass-stage :global(.glass-orb-a) {
+    top: -180px;
+    left: 8%;
+  }
+
+  .glass-stage :global(.glass-orb-b) {
+    bottom: -140px;
+    right: 10%;
+  }
+
+  .glass-stage :global(.glass-orb-c) {
+    top: 30%;
+    right: 28%;
+  }
+
+  .glass-panel {
+    position: relative;
+    z-index: 1;
+    max-width: 360px;
+    margin: var(--nx-space-6);
+    padding: var(--nx-space-6);
+    border-radius: var(--nx-radius-xl);
+    background: color-mix(in srgb, var(--nx-bg-card) 55%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--nx-border);
+  }
+
+  .glass-panel-title {
+    font-family: var(--nx-font-display);
+    font-weight: var(--nx-weight-bold);
+    font-size: var(--nx-text-lg);
+    margin-bottom: var(--nx-space-2);
+    color: var(--nx-text-primary);
+  }
+
+  .glass-panel-text {
+    margin: 0;
+    font-size: var(--nx-text-sm);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+  }
+</style>

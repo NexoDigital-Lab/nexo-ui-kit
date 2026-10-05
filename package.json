@@ -45,7 +45,9 @@
     "./Toast": "./src/components/Toast.astro",
     "./Tabs": "./src/components/Tabs.astro",
     "./Avatar": "./src/components/Avatar.astro",
-    "./EmptyState": "./src/components/EmptyState.astro"
+    "./EmptyState": "./src/components/EmptyState.astro",
+    "./GlowOrb": "./src/components/GlowOrb.astro",
+    "./ParticleField": "./src/components/ParticleField.astro"
   },
   "scripts": {
     "dev": "astro dev",

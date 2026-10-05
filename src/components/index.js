@@ -9,3 +9,5 @@ export { default as Toast } from './Toast.astro';
 export { default as Tabs } from './Tabs.astro';
 export { default as Avatar } from './Avatar.astro';
 export { default as EmptyState } from './EmptyState.astro';
+export { default as GlowOrb } from './GlowOrb.astro';
+export { default as ParticleField } from './ParticleField.astro';

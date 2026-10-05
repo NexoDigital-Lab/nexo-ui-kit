@@ -1,0 +1,171 @@
+---
+interface Props {
+  density?: number;
+  speed?: number;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  density = 0.00004,
+  speed = 0.3,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+---
+
+<canvas
+  class:list={['nx-particle-field', className]}
+  aria-hidden="true"
+  data-nx-particles
+  data-nx-density={density}
+  data-nx-speed={speed}
+  {...rest}
+></canvas>
+
+<style>
+  .nx-particle-field {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  const LINE_THRESHOLD = 120;
+  const DOT_RADIUS = 1.5;
+  const DOT_COLOR = 'rgba(0, 245, 255, 0.9)';
+  const LINE_RGB = '0, 245, 255';
+  const reduceQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  interface Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+  }
+
+  function initField(canvas: HTMLCanvasElement): void {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const density = Number.parseFloat(canvas.dataset.nxDensity ?? '0.00004') || 0.00004;
+    const speed = Number.parseFloat(canvas.dataset.nxSpeed ?? '0.3') || 0.3;
+    const particles: Particle[] = [];
+    let width = 0;
+    let height = 0;
+    let rafId = 0;
+
+    const spawn = (): Particle => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * speed * 2,
+      vy: (Math.random() - 0.5) * speed * 2,
+    });
+
+    const syncCount = (): void => {
+      const target = Math.max(8, Math.round(density * width * height));
+      while (particles.length > target) particles.pop();
+      while (particles.length < target) particles.push(spawn());
+    };
+
+    const resize = (): void => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      width = Math.max(1, rect.width);
+      height = Math.max(1, rect.height);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      syncCount();
+    };
+
+    const step = (): void => {
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) {
+          p.vx = -p.vx;
+          p.x = Math.max(0, Math.min(width, p.x));
+        }
+        if (p.y < 0 || p.y > height) {
+          p.vy = -p.vy;
+          p.y = Math.max(0, Math.min(height, p.y));
+        }
+      }
+    };
+
+    const draw = (): void => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i += 1) {
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < LINE_THRESHOLD) {
+            const alpha = (1 - dist / LINE_THRESHOLD) * 0.35;
+            ctx.strokeStyle = `rgba(${LINE_RGB}, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.fillStyle = DOT_COLOR;
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, DOT_RADIUS, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const frame = (): void => {
+      if (!canvas.isConnected) {
+        rafId = 0;
+        return;
+      }
+      step();
+      draw();
+      rafId = window.requestAnimationFrame(frame);
+    };
+
+    const renderStatic = (): void => {
+      window.cancelAnimationFrame(rafId);
+      rafId = 0;
+      draw();
+    };
+
+    const start = (): void => {
+      window.cancelAnimationFrame(rafId);
+      rafId = 0;
+      if (reduceQuery.matches) {
+        renderStatic();
+        return;
+      }
+      rafId = window.requestAnimationFrame(frame);
+    };
+
+    resize();
+    start();
+
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(() => {
+        resize();
+        if (reduceQuery.matches) renderStatic();
+      });
+      observer.observe(canvas);
+    } else {
+      const onResize = (): void => {
+        resize();
+        if (reduceQuery.matches) renderStatic();
+      };
+      window.addEventListener('resize', onResize);
+    }
+
+    reduceQuery.addEventListener('change', start);
+  }
+
+  document.querySelectorAll<HTMLCanvasElement>('[data-nx-particles]').forEach(initField);
+</script>

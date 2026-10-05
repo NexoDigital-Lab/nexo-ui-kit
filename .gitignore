@@ -18,3 +18,4 @@ node_modules/
 
 # agent skill registry cache
 .atl/
+.vercel

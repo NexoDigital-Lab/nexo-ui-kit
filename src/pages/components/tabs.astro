@@ -23,22 +23,26 @@ const snippet = `<Tabs
   ]}
   active="usage"
 >
-  <p>Content for the active tab panel.</p>
+  <p slot="overview">Overview panel content.</p>
+  <p slot="usage">Usage panel content.</p>
+  <p slot="api">API panel content.</p>
 </Tabs>`;
 ---
 
-<BaseLayout title="Tabs — Nexo UI Kit" description="Tabs component selection states and server-rendered active panel for the Nexo UI Kit.">
+<BaseLayout title="Tabs — Nexo UI Kit" description="Tabs component selection states and client-side panel switching for the Nexo UI Kit.">
   <SectionHeader
     badge="Components"
     title="Tabs"
-    subtitle="Server-rendered tab list with gradient underline for the active tab and a single panel."
+    subtitle="Interactive tab list with gradient underline for the active tab and client-side panel switching."
   />
 
   <section class="docs-section">
     <h2 class="docs-h2">Active: overview</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="overview">
-        <p>{panelCopy.overview}</p>
+        <p slot="overview">{panelCopy.overview}</p>
+        <p slot="usage">{panelCopy.usage}</p>
+        <p slot="api">{panelCopy.api}</p>
       </Tabs>
     </div>
   </section>
@@ -47,7 +51,9 @@ const snippet = `<Tabs
     <h2 class="docs-h2">Active: usage</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="usage">
-        <p>{panelCopy.usage}</p>
+        <p slot="overview">{panelCopy.overview}</p>
+        <p slot="usage">{panelCopy.usage}</p>
+        <p slot="api">{panelCopy.api}</p>
       </Tabs>
     </div>
   </section>
@@ -56,7 +62,9 @@ const snippet = `<Tabs
     <h2 class="docs-h2">Active: api</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="api">
-        <p>{panelCopy.api}</p>
+        <p slot="overview">{panelCopy.overview}</p>
+        <p slot="usage">{panelCopy.usage}</p>
+        <p slot="api">{panelCopy.api}</p>
       </Tabs>
     </div>
   </section>
@@ -65,7 +73,9 @@ const snippet = `<Tabs
     <h2 class="docs-h2">Defaults to the first tab</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs}>
-        <p>Without an <code class="docs-inline-code">active</code> prop, the first tab is selected.</p>
+        <p slot="overview">Without an <code class="docs-inline-code">active</code> prop, the first tab is selected.</p>
+        <p slot="usage">{panelCopy.usage}</p>
+        <p slot="api">{panelCopy.api}</p>
       </Tabs>
     </div>
   </section>
@@ -98,14 +108,13 @@ const snippet = `<Tabs
             <td><code>active</code></td>
             <td><code>string</code></td>
             <td>First tab's <code>id</code></td>
-            <td>Id of the selected tab. Only the active panel's slot content is rendered.</td>
+            <td>Id of the initially selected tab.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="docs-note">
-      Selection is server-rendered through the <code class="docs-inline-code">active</code> prop —
-      no client script. Instantiate the component multiple times to show different active states.
+      Click a tab or use arrow keys to switch panels. Pass named slots per tab id so every panel has content.
     </p>
   </section>
 </BaseLayout>

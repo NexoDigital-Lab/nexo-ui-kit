@@ -9,21 +9,24 @@ interface Props {
 
 const { src, alt, name, size = 'md', ...rest } = Astro.props as Props;
 
-const initials = name
-  .trim()
+const trimmedName = typeof name === 'string' ? name.trim() : '';
+const initials = trimmedName
   .split(/\s+/)
+  .filter(Boolean)
   .map((word) => word.charAt(0))
   .join('')
   .slice(0, 2)
   .toUpperCase();
+const fallbackInitials = initials || '?';
+const accessibleName = trimmedName || 'User';
 ---
 
 <span class:list={['nx-avatar', `s-${size}`]} {...rest}>
   {
     src ? (
-      <img class="nx-avatar-img" src={src} alt={alt ?? name} loading="lazy" />
+      <img class="nx-avatar-img" src={src} alt={alt ?? accessibleName} loading="lazy" />
     ) : (
-      <span class="nx-avatar-fallback">{initials}</span>
+      <span class="nx-avatar-fallback" role="img" aria-label={accessibleName}>{fallbackInitials}</span>
     )
   }
 </span>

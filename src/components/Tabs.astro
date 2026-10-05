@@ -11,7 +11,7 @@ const activeTab = active ?? tabs[0]?.id;
 const uid = `nx-tabs-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div class="nx-tabs" {...rest}>
+<div class="nx-tabs" data-nx-tabs {...rest}>
   <div class="nx-tabs-list" role="tablist">
     {
       tabs.map((tab) => (
@@ -23,21 +23,46 @@ const uid = `nx-tabs-${Math.random().toString(36).slice(2, 8)}`;
           aria-selected={tab.id === activeTab ? 'true' : 'false'}
           aria-controls={`${uid}-panel-${tab.id}`}
           tabindex={tab.id === activeTab ? 0 : -1}
+          data-nx-tab={tab.id}
         >
           {tab.label}
         </button>
       ))
     }
   </div>
-  <div
-    class="nx-tabs-panel"
-    role="tabpanel"
-    id={`${uid}-panel-${activeTab}`}
-    aria-labelledby={`${uid}-tab-${activeTab}`}
-  >
-    <slot />
-  </div>
+  {
+    tabs.map((tab) => (
+      <div class="nx-tabs-panel" role="tabpanel" id={`${uid}-panel-${tab.id}`} aria-labelledby={`${uid}-tab-${tab.id}`} hidden={tab.id === activeTab ? undefined : ''} data-nx-tab-panel={tab.id}>
+        <slot name={tab.id} />
+        {tab.id === activeTab && <slot />}
+      </div>
+    ))
+  }
 </div>
+
+<script>
+  document.querySelectorAll('[data-nx-tabs]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-nx-tab]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-nx-tab-panel]')];
+    const select = (tab: HTMLButtonElement) => {
+      tabs.forEach((t) => { const on = t === tab; t.classList.toggle('active', on); t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+      panels.forEach((p) => { p.hidden = p.dataset.nxTabPanel !== tab.dataset.nxTab; });
+      tab.focus();
+    };
+    root.addEventListener('click', (e) => {
+      const t = (e.target as Element).closest('[data-nx-tab]');
+      if (t && root.contains(t)) select(t as HTMLButtonElement);
+    });
+    root.querySelector('[role="tablist"]')?.addEventListener('keydown', (e) => {
+      const i = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      if (i < 0) return;
+      const n = { ArrowLeft: (i - 1 + tabs.length) % tabs.length, ArrowRight: (i + 1) % tabs.length, Home: 0, End: tabs.length - 1 }[e.key as string];
+      if (n === undefined) return;
+      e.preventDefault();
+      select(tabs[n]);
+    });
+  });
+</script>
 
 <style>
   .nx-tabs-list {

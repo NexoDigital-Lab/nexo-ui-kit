@@ -18,7 +18,7 @@ const {
 
 <div class="nx-modal" data-nx-modal hidden={open ? undefined : ''} {...rest}>
   <div class="nx-modal-backdrop" data-nx-modal-backdrop></div>
-  <div class:list={['nx-modal-panel', `s-${size}`]} role="dialog" aria-modal="true" aria-label={title}>
+  <div class:list={['nx-modal-panel', `s-${size}`]} role="dialog" aria-modal="true" aria-label={title} tabindex="-1">
     <div class="nx-modal-header">
       <h3 class="nx-modal-title">{title}</h3>
       {
@@ -49,22 +49,51 @@ const {
 </div>
 
 <script>
-  const hideModal = (modal: Element | null) => {
-    if (modal) modal.setAttribute('hidden', '');
-  };
+  const SEL = '[data-nx-modal]';
+  const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  const prev = new WeakMap<Element, Element | null>();
+  const panelOf = (m: Element) => m.querySelector<HTMLElement>('[role="dialog"]');
+  const focusables = (p: HTMLElement) => [...p.querySelectorAll<HTMLElement>(FOCUSABLE)];
 
-  document.addEventListener('click', (event) => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
+  document.addEventListener('click', (e) => {
+    if (!(e.target instanceof Element)) return;
+    if (e.target.closest('[data-nx-modal-close]') || e.target.matches('[data-nx-modal-backdrop]')) e.target.closest(SEL)?.setAttribute('hidden', '');
+  });
 
-    if (target.closest('[data-nx-modal-close]')) {
-      hideModal(target.closest('[data-nx-modal]'));
-      return;
+  document.addEventListener('keydown', (e) => {
+    const m = [...document.querySelectorAll(SEL)].filter((x) => !x.hasAttribute('hidden')).pop();
+    if (!m) return;
+    if (e.key === 'Escape') { e.preventDefault(); m.setAttribute('hidden', ''); return; }
+    if (e.key !== 'Tab') return;
+    const p = panelOf(m);
+    if (!p) return;
+    const items = focusables(p);
+    if (!items.length) { e.preventDefault(); p.focus(); return; }
+    const [first, last] = [items[0], items[items.length - 1]];
+    const active = document.activeElement;
+    if (e.shiftKey ? active === first || !p.contains(active) : active === last || !p.contains(active)) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
     }
+  });
 
-    if (target.matches('[data-nx-modal-backdrop]')) {
-      hideModal(target.closest('[data-nx-modal]'));
+  const observer = new MutationObserver((mutations) => {
+    for (const mut of mutations) {
+      if (mut.type !== 'attributes' || mut.attributeName !== 'hidden') continue;
+      const m = mut.target;
+      const open = !m.hasAttribute('hidden');
+      const p = prev.get(m);
+      if (!open) prev.delete(m);
+      else prev.set(m, document.activeElement);
+      const panel = open ? panelOf(m) : null;
+      if (open && panel) (focusables(panel)[0] ?? panel).focus();
+      else if (!open && p instanceof HTMLElement && document.contains(p)) p.focus();
     }
+  });
+
+  document.querySelectorAll(SEL).forEach((m) => {
+    if (!m.hasAttribute('hidden')) prev.set(m, document.activeElement);
+    observer.observe(m, { attributes: true, attributeFilter: ['hidden'] });
   });
 </script>
 

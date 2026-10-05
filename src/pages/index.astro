@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import Badge from '../components/Badge.astro';
+
+const components = [
+  {
+    href: '/components/button',
+    name: 'Button',
+    description: 'Gradient, outline, ghost and danger actions with three sizes.',
+    badge: 'Actions',
+  },
+  {
+    href: '/components/badge',
+    name: 'Badge',
+    description: 'Soft pill labels for status, categories and metadata.',
+    badge: 'Display',
+  },
+  {
+    href: '/components/card',
+    name: 'Card',
+    description: 'Elevated surface container with optional hover glow.',
+    badge: 'Layout',
+  },
+  {
+    href: '/components/input',
+    name: 'Input',
+    description: 'Dark form fields with labels, focus ring and error state.',
+    badge: 'Forms',
+  },
+  {
+    href: '/components/search-bar',
+    name: 'SearchBar',
+    description: 'Search field with icon and submit button, ready to compose.',
+    badge: 'Forms',
+  },
+  {
+    href: '/components/section-header',
+    name: 'SectionHeader',
+    description: 'Badge, title and subtitle header for page sections.',
+    badge: 'Layout',
+  },
+];
+---
+
+<BaseLayout title="Nexo UI Kit — Design System" description="Nexo UI Kit is the shared design system and Astro component library for Nexo Digital Lab.">
+  <section class="landing-hero">
+    <Badge variant="cyan" dot>Design System</Badge>
+    <h1 class="landing-title nx-gradient-text">Nexo UI Kit</h1>
+    <p class="landing-subtitle">
+      The shared design system and Astro component library for the Nexo Digital
+      ecosystem — tokens, primitives and documentation in one place.
+    </p>
+    <div class="landing-actions">
+      <Button href="/components/button" variant="primary" size="lg">View components</Button>
+      <Button href="/tokens" variant="secondary" size="lg">View tokens</Button>
+    </div>
+  </section>
+
+  <section class="landing-components">
+    <h2 class="landing-section-title">Components</h2>
+    <div class="landing-grid">
+      {
+        components.map((item) => (
+          <a href={item.href} class="landing-card-link">
+            <Card>
+              <Badge variant="purple" size="sm">{item.badge}</Badge>
+              <h3 class="landing-card-name">{item.name}</h3>
+              <p class="landing-card-desc">{item.description}</p>
+            </Card>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .landing-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--nx-space-5);
+    padding: var(--nx-space-16) var(--nx-space-4) var(--nx-space-12);
+  }
+
+  .landing-title {
+    font-family: var(--nx-font-display);
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: var(--nx-weight-extrabold);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .landing-subtitle {
+    max-width: 600px;
+    font-size: var(--nx-text-md);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-relaxed);
+  }
+
+  .landing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nx-space-4);
+    justify-content: center;
+    margin-top: var(--nx-space-2);
+  }
+
+  .landing-components {
+    padding: 0 var(--nx-space-4) var(--nx-space-16);
+    max-width: var(--nx-container-max);
+    margin: 0 auto;
+  }
+
+  .landing-section-title {
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-xl);
+    font-weight: var(--nx-weight-bold);
+    margin-bottom: var(--nx-space-6);
+    text-align: center;
+  }
+
+  .landing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--nx-space-5);
+  }
+
+  .landing-card-link {
+    display: block;
+    height: 100%;
+  }
+
+  .landing-card-link :global(.nx-card) {
+    height: 100%;
+  }
+
+  .landing-card-name {
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-lg);
+    font-weight: var(--nx-weight-bold);
+    margin: var(--nx-space-3) 0 var(--nx-space-2);
+    color: var(--nx-text-primary);
+  }
+
+  .landing-card-desc {
+    font-size: var(--nx-text-sm);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+  }
+</style>

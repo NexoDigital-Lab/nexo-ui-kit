@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Nexo UI Kit — Base styles
+   Minimal reset + document defaults. Import after tokens.css.
+   ========================================================================== */
+
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--nx-font-body);
+  background-color: var(--nx-bg-primary);
+  color: var(--nx-text-primary);
+  line-height: var(--nx-leading-normal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nx-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nx-purple);
+  border-radius: 3px;
+}
+
+/* Layout helpers */
+.nx-container {
+  max-width: var(--nx-container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nx-section {
+  padding: var(--nx-section-pad-y) var(--nx-section-pad-x);
+}
+
+/* Text utilities */
+.nx-gradient-text {
+  background: var(--nx-gradient-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nx-text-secondary {
+  color: var(--nx-text-secondary);
+}
+
+.nx-text-muted {
+  color: var(--nx-text-muted);
+}

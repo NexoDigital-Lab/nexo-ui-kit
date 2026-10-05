@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Input from '../../components/Input.astro';
+
+const snippet = `<Input label="Email" type="email" name="email" placeholder="you@example.com" />
+
+<Input label="Password" type="password" name="password" required />
+
+<Input name="search" type="search" placeholder="Search without label" />
+
+<Input label="Username" name="username" error="This username is already taken." />`;
+---
+
+<BaseLayout title="Input — Nexo UI Kit" description="Input component types, labels and error state for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="Input"
+    subtitle="Dark form fields with optional labels, focus ring and inline error messaging."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">With label</h2>
+    <div class="docs-example docs-example-stack" style="max-width: 420px;">
+      <Input label="Full name" name="name" placeholder="Ada Lovelace" />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Types</h2>
+    <div class="docs-example docs-example-stack" style="max-width: 420px;">
+      <Input label="Text" type="text" name="text" placeholder="Plain text" />
+      <Input label="Email" type="email" name="email" placeholder="you@example.com" />
+      <Input label="Password" type="password" name="password" placeholder="••••••••" />
+      <Input label="Search" type="search" name="search" placeholder="Search…" />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Without label</h2>
+    <div class="docs-example docs-example-stack" style="max-width: 420px;">
+      <Input name="bare" placeholder="No label" />
+      <Input name="required-field" placeholder="Required field" required />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Error state</h2>
+    <div class="docs-example docs-example-stack" style="max-width: 420px;">
+      <Input
+        label="Username"
+        name="username"
+        placeholder="Choose a username"
+        error="This username is already taken."
+      />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>label</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Optional label rendered above the field.</td>
+          </tr>
+          <tr>
+            <td><code>placeholder</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Placeholder text.</td>
+          </tr>
+          <tr>
+            <td><code>type</code></td>
+            <td><code>'text' | 'email' | 'password' | 'search'</code></td>
+            <td><code>'text'</code></td>
+            <td>Native input type.</td>
+          </tr>
+          <tr>
+            <td><code>name</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Form field name. Also used to derive the id when none is given.</td>
+          </tr>
+          <tr>
+            <td><code>id</code></td>
+            <td><code>string</code></td>
+            <td><code>input-&#123;name&#125;</code></td>
+            <td>Explicit id for the input element.</td>
+          </tr>
+          <tr>
+            <td><code>required</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Marks the field as required.</td>
+          </tr>
+          <tr>
+            <td><code>error</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Error message shown below the field in danger color.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

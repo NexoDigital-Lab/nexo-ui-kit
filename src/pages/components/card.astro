@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Card from '../../components/Card.astro';
+import Badge from '../../components/Badge.astro';
+import Button from '../../components/Button.astro';
+
+const snippet = `<Card>
+  <h3>Card title</h3>
+  <p>Card body content.</p>
+</Card>
+
+<Card hover={false} padding="lg">
+  <p>Static card with larger padding.</p>
+</Card>`;
+---
+
+<BaseLayout title="Card — Nexo UI Kit" description="Card component padding, hover state and usage for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="Card"
+    subtitle="Elevated surface container with optional hover glow for interactive content."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Default card</h2>
+    <div class="docs-example docs-example-stack">
+      <Card>
+        <Badge variant="purple" size="sm">Layout</Badge>
+        <h3 class="card-demo-title">Card title</h3>
+        <p class="card-demo-body">
+          Cards rest on the card surface with a subtle border. Hover lifts the
+          surface, brightens the border and adds a shadow.
+        </p>
+        <Button variant="secondary" size="sm">Learn more</Button>
+      </Card>
+    </div>
+    <p class="docs-note">Hover the card above to see the elevated state.</p>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Padding</h2>
+    <div class="docs-example">
+      <Card padding="md">
+        <p class="card-demo-body">padding="md"</p>
+      </Card>
+      <Card padding="lg">
+        <p class="card-demo-body">padding="lg"</p>
+      </Card>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Hover disabled</h2>
+    <div class="docs-example">
+      <Card hover={false}>
+        <p class="card-demo-body">Static card — hover disabled</p>
+      </Card>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>hover</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Enables hover elevation: lighter surface, glow border and shadow.</td>
+          </tr>
+          <tr>
+            <td><code>padding</code></td>
+            <td><code>'md' | 'lg'</code></td>
+            <td><code>'md'</code></td>
+            <td>Inner padding of the card.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card-demo-title {
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-lg);
+    font-weight: var(--nx-weight-bold);
+    margin: var(--nx-space-3) 0 var(--nx-space-2);
+    color: var(--nx-text-primary);
+  }
+
+  .card-demo-body {
+    font-size: var(--nx-text-sm);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+  }
+</style>

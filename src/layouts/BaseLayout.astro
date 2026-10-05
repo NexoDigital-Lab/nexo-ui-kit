@@ -1,0 +1,79 @@
+---
+import '../styles/base.css';
+import '../styles/docs.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Nexo UI Kit — design system and Astro components for the Nexo Digital ecosystem.',
+} = Astro.props;
+
+const componentLinks = [
+  { href: '/components/button', label: 'Button' },
+  { href: '/components/badge', label: 'Badge' },
+  { href: '/components/card', label: 'Card' },
+  { href: '/components/input', label: 'Input' },
+  { href: '/components/search-bar', label: 'SearchBar' },
+  { href: '/components/section-header', label: 'SectionHeader' },
+];
+
+const hasSidebar = Astro.slots.has('sidebar');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="docs-nav" aria-label="Main">
+      <div class="docs-nav-inner nx-container">
+        <a href="/" class="docs-logo">Nexo UI Kit</a>
+        <div class="docs-nav-links">
+          <a href="/">Home</a>
+          <a href="/tokens">Tokens</a>
+          <details class="docs-nav-details">
+            <summary>Components</summary>
+            <div class="docs-nav-dropdown">
+              {componentLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+            </div>
+          </details>
+        </div>
+      </div>
+    </nav>
+
+    <div class:list={['docs-body', { 'has-sidebar': hasSidebar }]}>
+      {
+        hasSidebar && (
+          <aside class="docs-sidebar">
+            <slot name="sidebar" />
+          </aside>
+        )
+      }
+      <main class="docs-main">
+        <slot />
+      </main>
+    </div>
+
+    <footer class="docs-footer">
+      <div class="nx-container">
+        <p>
+          Nexo UI Kit — crafted by <a href="https://github.com/NexoDigital-Lab">Nexo Digital Lab</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

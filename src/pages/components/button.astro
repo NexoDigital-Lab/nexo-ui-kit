@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Button from '../../components/Button.astro';
+
+const variants = ['primary', 'secondary', 'ghost', 'danger'] as const;
+const sizes = ['sm', 'md', 'lg'] as const;
+
+const snippet = `<Button variant="primary" size="md">Click me</Button>
+
+<Button href="/tokens" variant="secondary" size="md">View tokens</Button>
+
+<Button variant="ghost">Ghost action</Button>
+
+<Button variant="danger" size="lg">Delete</Button>
+
+<Button variant="primary" size="sm" disabled>Disabled</Button>`;
+---
+
+<BaseLayout title="Button — Nexo UI Kit" description="Button component variants, sizes and usage for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="Button"
+    subtitle="Action trigger with gradient, outline, ghost and danger variants in three sizes."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Variants</h2>
+    <div class="docs-example">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="danger">Danger</Button>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Sizes</h2>
+    <div class="docs-example">
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">All combinations</h2>
+    <div class="docs-example docs-example-stack">
+      {
+        variants.map((variant) => (
+          <p class="docs-example-label">{variant}</p>
+          <div class="combo-row">
+            {sizes.map((size) => (
+              <Button variant={variant} size={size}>
+                {size}
+              </Button>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Link and disabled</h2>
+    <div class="docs-example">
+      <Button href="/tokens" variant="secondary">Link button</Button>
+      <Button variant="primary" disabled>Disabled</Button>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>variant</code></td>
+            <td><code>'primary' | 'secondary' | 'ghost' | 'danger'</code></td>
+            <td><code>'primary'</code></td>
+            <td>Visual style of the button.</td>
+          </tr>
+          <tr>
+            <td><code>size</code></td>
+            <td><code>'sm' | 'md' | 'lg'</code></td>
+            <td><code>'md'</code></td>
+            <td>Padding and font size.</td>
+          </tr>
+          <tr>
+            <td><code>href</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Renders the button as an <code>&lt;a&gt;</code> link when provided.</td>
+          </tr>
+          <tr>
+            <td><code>type</code></td>
+            <td><code>'button' | 'submit' | 'reset'</code></td>
+            <td><code>'button'</code></td>
+            <td>Native button type (ignored when <code>href</code> is set).</td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Disables interaction and applies reduced opacity.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .combo-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nx-space-3);
+    align-items: center;
+  }
+</style>

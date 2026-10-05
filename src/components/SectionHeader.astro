@@ -1,0 +1,71 @@
+---
+interface Props {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  centered?: boolean;
+  gradientTitle?: boolean;
+}
+
+const {
+  badge,
+  title,
+  subtitle,
+  centered = false,
+  gradientTitle = false,
+} = Astro.props;
+---
+
+<header class:list={['nx-section-header', { centered }]}>
+  {badge && <span class="nx-section-badge">{badge}</span>}
+  <h2 class:list={['nx-section-title', { 'nx-gradient-text': gradientTitle }]}>{title}</h2>
+  {subtitle && <p class="nx-section-subtitle">{subtitle}</p>}
+</header>
+
+<style>
+  .nx-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: var(--nx-space-10);
+  }
+
+  .nx-section-header.centered {
+    align-items: center;
+    text-align: center;
+  }
+
+  .nx-section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nx-space-2);
+    padding: 0.3rem 1rem;
+    border-radius: var(--nx-radius-full);
+    background: color-mix(in srgb, var(--nx-purple) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--nx-purple) 30%, transparent);
+    font-family: var(--nx-font-body);
+    font-size: var(--nx-text-sm);
+    font-weight: var(--nx-weight-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--nx-purple-soft);
+    margin-bottom: var(--nx-space-3);
+  }
+
+  .nx-section-title {
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-2xl);
+    font-weight: var(--nx-weight-extrabold);
+    line-height: var(--nx-leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--nx-text-primary);
+  }
+
+  .nx-section-subtitle {
+    margin-top: var(--nx-space-3);
+    font-size: var(--nx-text-md);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+    max-width: 620px;
+  }
+</style>

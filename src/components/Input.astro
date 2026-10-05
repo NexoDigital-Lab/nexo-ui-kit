@@ -1,0 +1,143 @@
+---
+interface Props {
+  label?: string;
+  placeholder?: string;
+  type?: 'text' | 'email' | 'password' | 'search';
+  name?: string;
+  id?: string;
+  required?: boolean;
+  error?: string;
+  [key: string]: unknown;
+}
+
+const {
+  label,
+  placeholder,
+  type = 'text',
+  name,
+  id,
+  required = false,
+  error,
+  ...rest
+} = Astro.props as Props;
+
+const inputId = id ?? (name ? `input-${name}` : undefined);
+const errorId = inputId ? `${inputId}-error` : undefined;
+---
+
+<div class="nx-field">
+  {
+    label && (
+      <label class="nx-label" for={inputId}>
+        {label}
+        {required && <span class="nx-required" aria-hidden="true"> *</span>}
+      </label>
+    )
+  }
+  <div class="nx-control">
+    <slot name="icon" />
+    <input
+      class:list={['nx-input', { 'has-error': Boolean(error) }]}
+      type={type}
+      name={name}
+      id={inputId}
+      placeholder={placeholder}
+      required={required || undefined}
+      aria-invalid={error ? 'true' : undefined}
+      aria-describedby={error ? errorId : undefined}
+      {...rest}
+    />
+  </div>
+  {
+    error && (
+      <p class="nx-error" id={errorId} role="alert">
+        {error}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .nx-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-2);
+    width: 100%;
+  }
+
+  .nx-label {
+    font-size: var(--nx-text-sm);
+    font-weight: var(--nx-weight-medium);
+    color: var(--nx-text-secondary);
+  }
+
+  .nx-required {
+    color: var(--nx-danger);
+  }
+
+  .nx-control {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nx-control :global(svg) {
+    position: absolute;
+    left: var(--nx-space-3);
+    color: var(--nx-text-muted);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .nx-control:has(:global(svg)) .nx-input {
+    padding-left: calc(var(--nx-space-3) + 1.25rem);
+  }
+
+  .nx-input {
+    width: 100%;
+    padding: var(--nx-space-3) var(--nx-space-4);
+    background: var(--nx-bg-secondary);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-lg);
+    color: var(--nx-text-primary);
+    font-family: var(--nx-font-body);
+    font-size: var(--nx-text-sm);
+    transition:
+      border-color var(--nx-duration-fast) var(--nx-ease),
+      box-shadow var(--nx-duration-fast) var(--nx-ease);
+  }
+
+  .nx-input::placeholder {
+    color: var(--nx-text-muted);
+  }
+
+  .nx-input:hover {
+    border-color: var(--nx-border-strong);
+  }
+
+  .nx-input:focus {
+    outline: none;
+    border-color: var(--nx-border-glow);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--nx-cyan) 12%, transparent);
+  }
+
+  .nx-input.has-error {
+    border-color: color-mix(in srgb, var(--nx-danger) 55%, transparent);
+  }
+
+  .nx-input.has-error:focus {
+    border-color: var(--nx-danger);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--nx-danger) 12%, transparent);
+  }
+
+  .nx-input[type='search']::-webkit-search-decoration,
+  .nx-input[type='search']::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
+  .nx-error {
+    margin: 0;
+    font-size: var(--nx-text-sm);
+    color: var(--nx-danger);
+  }
+</style>

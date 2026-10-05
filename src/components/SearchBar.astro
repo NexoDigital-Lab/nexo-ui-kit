@@ -1,0 +1,61 @@
+---
+import Input from './Input.astro';
+import Button from './Button.astro';
+
+interface Props {
+  placeholder?: string;
+  name?: string;
+  [key: string]: unknown;
+}
+
+const { placeholder = 'Buscar...', name = 'q', ...rest } = Astro.props as Props;
+---
+
+<form class="nx-search" role="search" method="get" {...rest}>
+  <div class="nx-search-field">
+    <Input type="search" name={name} placeholder={placeholder} autocomplete="off">
+      <svg
+        slot="icon"
+        class="nx-search-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </Input>
+  </div>
+  <Button type="submit" variant="primary" size="sm">Buscar</Button>
+</form>
+
+<style>
+  .nx-search {
+    display: flex;
+    align-items: stretch;
+    gap: var(--nx-space-3);
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .nx-search-field {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+  }
+
+  .nx-search-field :global(.nx-field) {
+    width: 100%;
+  }
+
+  .nx-search-icon {
+    display: block;
+  }
+</style>

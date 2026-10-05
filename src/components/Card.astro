@@ -1,0 +1,42 @@
+---
+interface Props {
+  hover?: boolean;
+  padding?: 'md' | 'lg';
+  [key: string]: unknown;
+}
+
+const { hover = true, padding = 'md', ...rest } = Astro.props as Props;
+---
+
+<div class:list={['nx-card', `pad-${padding}`, { 'hover-enabled': hover }]} {...rest}>
+  <slot />
+</div>
+
+<style>
+  .nx-card {
+    background: var(--nx-bg-card);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-lg);
+    box-shadow: var(--nx-shadow-card);
+    transition:
+      background var(--nx-duration-normal) var(--nx-ease),
+      border-color var(--nx-duration-normal) var(--nx-ease),
+      box-shadow var(--nx-duration-normal) var(--nx-ease),
+      transform var(--nx-duration-normal) var(--nx-ease);
+  }
+
+  .pad-md {
+    padding: var(--nx-space-6);
+  }
+
+  .pad-lg {
+    padding: var(--nx-space-8);
+  }
+
+  .hover-enabled:hover {
+    background: var(--nx-bg-card-hover);
+    border-color: var(--nx-border-glow);
+    box-shadow: var(--nx-shadow-card-hover);
+    transform: translateY(-2px);
+  }
+</style>

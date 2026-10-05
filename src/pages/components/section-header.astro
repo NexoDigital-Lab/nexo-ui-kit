@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+
+const snippet = `<SectionHeader
+  badge="Components"
+  title="Section Header"
+  subtitle="Badge, title and subtitle for page sections."
+/>
+
+<SectionHeader
+  badge="Centered"
+  title="Centered title"
+  subtitle="Aligned to the center for hero-style sections."
+  centered
+  gradientTitle
+/>`;
+---
+
+<BaseLayout title="SectionHeader — Nexo UI Kit" description="SectionHeader component alignment and gradient title examples for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="SectionHeader"
+    subtitle="Composes an optional badge, a display title and a subtitle for page sections."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Left aligned</h2>
+    <div class="docs-example docs-example-stack">
+      <SectionHeader
+        badge="Foundation"
+        title="Left aligned title"
+        subtitle="Default alignment — the badge, title and subtitle hug the left edge."
+      />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Centered with gradient title</h2>
+    <div class="docs-example docs-example-stack docs-example-center">
+      <SectionHeader
+        badge="Showcase"
+        title="Centered gradient title"
+        subtitle="centered plus gradientTitle for hero-style section headers."
+        centered
+        gradientTitle
+      />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Without badge or subtitle</h2>
+    <div class="docs-example docs-example-stack">
+      <SectionHeader title="Title only" />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>badge</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Small pill label rendered above the title.</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Section title rendered as a heading.</td>
+          </tr>
+          <tr>
+            <td><code>subtitle</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Optional supporting text below the title.</td>
+          </tr>
+          <tr>
+            <td><code>centered</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Centers the header content horizontally.</td>
+          </tr>
+          <tr>
+            <td><code>gradientTitle</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Applies the brand gradient text effect to the title.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

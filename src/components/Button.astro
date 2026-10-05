@@ -1,0 +1,125 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  ...rest
+} = Astro.props as Props;
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  class:list={['nx-btn', `v-${variant}`, `s-${size}`, { 'is-disabled': disabled }]}
+  href={href}
+  type={href ? undefined : type}
+  disabled={href ? undefined : disabled}
+  aria-disabled={disabled ? 'true' : undefined}
+  {...rest}
+>
+  <slot />
+</Element>
+
+<style>
+  .nx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--nx-space-2);
+    border-radius: var(--nx-radius-full);
+    border: 1px solid transparent;
+    font-family: var(--nx-font-body);
+    font-weight: var(--nx-weight-semibold);
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background var(--nx-duration-fast) var(--nx-ease),
+      border-color var(--nx-duration-fast) var(--nx-ease),
+      color var(--nx-duration-fast) var(--nx-ease),
+      box-shadow var(--nx-duration-fast) var(--nx-ease),
+      transform var(--nx-duration-fast) var(--nx-ease);
+  }
+
+  .nx-btn:focus-visible {
+    outline: 2px solid var(--nx-cyan);
+    outline-offset: 2px;
+  }
+
+  .nx-btn.is-disabled,
+  .nx-btn.is-disabled:hover {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .s-sm {
+    padding: var(--nx-space-2) var(--nx-space-4);
+    font-size: var(--nx-text-sm);
+  }
+
+  .s-md {
+    padding: var(--nx-space-3) var(--nx-space-5);
+    font-size: var(--nx-text-base);
+  }
+
+  .s-lg {
+    padding: var(--nx-space-4) var(--nx-space-8);
+    font-size: var(--nx-text-md);
+  }
+
+  .v-primary {
+    background: var(--nx-gradient-brand);
+    color: var(--nx-text-inverse);
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--nx-purple) 25%, transparent);
+  }
+
+  .v-primary:hover {
+    box-shadow: var(--nx-shadow-glow-cyan), var(--nx-shadow-glow-purple);
+    transform: translateY(-1px);
+  }
+
+  .v-secondary {
+    background: transparent;
+    border-color: var(--nx-border-glow);
+    color: var(--nx-cyan);
+  }
+
+  .v-secondary:hover {
+    border-color: var(--nx-cyan);
+    background: color-mix(in srgb, var(--nx-cyan) 8%, transparent);
+    box-shadow: var(--nx-shadow-glow-cyan);
+  }
+
+  .v-ghost {
+    background: transparent;
+    color: var(--nx-text-secondary);
+  }
+
+  .v-ghost:hover {
+    background: color-mix(in srgb, var(--nx-purple) 10%, transparent);
+    color: var(--nx-text-primary);
+  }
+
+  .v-danger {
+    background: var(--nx-magenta);
+    color: var(--nx-text-inverse);
+  }
+
+  .v-danger:hover {
+    box-shadow: var(--nx-shadow-glow-purple);
+    transform: translateY(-1px);
+  }
+</style>

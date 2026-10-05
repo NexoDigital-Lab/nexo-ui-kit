@@ -1,0 +1,442 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const brandColors = [
+  { name: '--nx-cyan', hex: '#00f5ff' },
+  { name: '--nx-purple', hex: '#a855f7' },
+  { name: '--nx-magenta', hex: '#ff2d78' },
+  { name: '--nx-indigo', hex: '#6366f1' },
+];
+
+const softColors = [
+  { name: '--nx-cyan-soft', hex: '#67f8ff' },
+  { name: '--nx-purple-soft', hex: '#c084fc' },
+  { name: '--nx-magenta-soft', hex: '#ff6ba3' },
+  { name: '--nx-indigo-soft', hex: '#818cf8' },
+];
+
+const semanticColors = [
+  { name: '--nx-success', hex: '#4ade80' },
+  { name: '--nx-warning', hex: '#fbbf24' },
+  { name: '--nx-danger', hex: '#f87171' },
+  { name: '--nx-info', hex: '#60a5fa' },
+];
+
+const surfaceColors = [
+  { name: '--nx-bg-primary', hex: '#0a0a0f' },
+  { name: '--nx-bg-secondary', hex: '#0f0f1a' },
+  { name: '--nx-bg-card', hex: '#12121f' },
+  { name: '--nx-bg-card-hover', hex: '#1a1a2e' },
+  { name: '--nx-bg-elevated', hex: '#1e1e32' },
+];
+
+const borderTokens = [
+  { name: '--nx-border', hex: 'rgba(168, 85, 247, 0.15)' },
+  { name: '--nx-border-glow', hex: 'rgba(0, 245, 255, 0.3)' },
+  { name: '--nx-border-strong', hex: 'rgba(168, 85, 247, 0.35)' },
+];
+
+const textTokens = [
+  { name: '--nx-text-primary', hex: '#f0f0ff' },
+  { name: '--nx-text-secondary', hex: '#babac2' },
+  { name: '--nx-text-muted', hex: '#9a9ab0' },
+  { name: '--nx-text-inverse', hex: '#0a0a0f' },
+];
+
+const typeScale = [
+  { name: '--nx-text-2xl', size: 'var(--nx-text-2xl)', sample: 'Display 2XL' },
+  { name: '--nx-text-xl', size: 'var(--nx-text-xl)', sample: 'Display XL' },
+  { name: '--nx-text-lg', size: 'var(--nx-text-lg)', sample: 'Heading large' },
+  { name: '--nx-text-md', size: 'var(--nx-text-md)', sample: 'Body large' },
+  { name: '--nx-text-base', size: 'var(--nx-text-base)', sample: 'Body base' },
+  { name: '--nx-text-sm', size: 'var(--nx-text-sm)', sample: 'Body small' },
+  { name: '--nx-text-xs', size: 'var(--nx-text-xs)', sample: 'Caption extra small' },
+];
+
+const weights = [
+  { name: '--nx-weight-normal', value: '400' },
+  { name: '--nx-weight-medium', value: '500' },
+  { name: '--nx-weight-semibold', value: '600' },
+  { name: '--nx-weight-bold', value: '700' },
+  { name: '--nx-weight-extrabold', value: '800' },
+];
+
+const spacingScale = [
+  { name: '--nx-space-1', token: 'var(--nx-space-1)' },
+  { name: '--nx-space-2', token: 'var(--nx-space-2)' },
+  { name: '--nx-space-3', token: 'var(--nx-space-3)' },
+  { name: '--nx-space-4', token: 'var(--nx-space-4)' },
+  { name: '--nx-space-5', token: 'var(--nx-space-5)' },
+  { name: '--nx-space-6', token: 'var(--nx-space-6)' },
+  { name: '--nx-space-8', token: 'var(--nx-space-8)' },
+  { name: '--nx-space-10', token: 'var(--nx-space-10)' },
+  { name: '--nx-space-12', token: 'var(--nx-space-12)' },
+  { name: '--nx-space-16', token: 'var(--nx-space-16)' },
+];
+
+const radiusSamples = [
+  { name: '--nx-radius-sm', token: 'var(--nx-radius-sm)' },
+  { name: '--nx-radius-md', token: 'var(--nx-radius-md)' },
+  { name: '--nx-radius-lg', token: 'var(--nx-radius-lg)' },
+  { name: '--nx-radius-xl', token: 'var(--nx-radius-xl)' },
+  { name: '--nx-radius-full', token: 'var(--nx-radius-full)' },
+];
+
+const gradientSamples = [
+  { name: '--nx-gradient-main', token: 'var(--nx-gradient-main)' },
+  { name: '--nx-gradient-subtle', token: 'var(--nx-gradient-subtle)' },
+  { name: '--nx-gradient-brand', token: 'var(--nx-gradient-brand)' },
+  { name: '--nx-gradient-magenta', token: 'var(--nx-gradient-magenta)' },
+];
+---
+
+<BaseLayout title="Design Tokens — Nexo UI Kit" description="Complete reference of the --nx-* design tokens: colors, typography, spacing, radius and gradients.">
+  <SectionHeader
+    badge="Foundation"
+    title="Design Tokens"
+    subtitle="Every visual value in the Nexo UI Kit comes from the --nx-* custom properties defined in tokens.css."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Brand colors</h2>
+    <div class="token-swatches">
+      {
+        brandColors.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Soft variants</h2>
+    <div class="token-swatches">
+      {
+        softColors.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Semantic status</h2>
+    <div class="token-swatches">
+      {
+        semanticColors.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Surfaces</h2>
+    <div class="token-swatches">
+      {
+        surfaceColors.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip token-chip-surface" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Borders</h2>
+    <div class="token-swatches">
+      {
+        borderTokens.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip token-chip-surface" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Text colors</h2>
+    <div class="token-swatches">
+      {
+        textTokens.map((c) => (
+          <div class="token-swatch">
+            <div class="token-chip token-chip-surface" style={`background: var(${c.name})`} />
+            <div class="token-meta">
+              <code>{c.name}</code>
+              <span>{c.hex}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Typography</h2>
+    <p class="token-group-label">Fonts</p>
+    <div class="token-fonts">
+      <p style="font-family: var(--nx-font-body)">Inter — <code>--nx-font-body</code></p>
+      <p style="font-family: var(--nx-font-display)">Outfit — <code>--nx-font-display</code></p>
+    </div>
+
+    <p class="token-group-label">Type scale</p>
+    <div class="token-type-scale">
+      {
+        typeScale.map((t) => (
+          <div class="token-type-row">
+            <span class="token-type-sample" style={`font-size: ${t.size}`}>{t.sample}</span>
+            <code>{t.name}</code>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="token-group-label">Weights</p>
+    <div class="token-weights">
+      {
+        weights.map((w) => (
+          <div class="token-weight-row">
+            <span style={`font-weight: ${w.value}`}>The quick brown fox</span>
+            <code>{w.name} ({w.value})</code>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Spacing scale</h2>
+    <div class="token-spacing">
+      {
+        spacingScale.map((s) => (
+          <div class="token-spacing-row">
+            <div class="token-spacing-bar" style={`width: ${s.token}`} />
+            <code>{s.name}</code>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Radius</h2>
+    <div class="token-radius">
+      {
+        radiusSamples.map((r) => (
+          <div class="token-radius-item">
+            <div class="token-radius-box" style={`border-radius: ${r.token}`} />
+            <code>{r.name}</code>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Gradients</h2>
+    <div class="token-gradients">
+      {
+        gradientSamples.map((g) => (
+          <div class="token-gradient-item">
+            <div class="token-gradient-box" style={`background: ${g.token}`} />
+            <code>{g.name}</code>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .token-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--nx-space-4);
+  }
+
+  .token-swatch {
+    display: flex;
+    align-items: center;
+    gap: var(--nx-space-3);
+    padding: var(--nx-space-3);
+    background: var(--nx-bg-card);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-lg);
+  }
+
+  .token-chip {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid var(--nx-border);
+    flex-shrink: 0;
+  }
+
+  .token-chip-surface {
+    border-radius: var(--nx-radius-md);
+  }
+
+  .token-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-1);
+    min-width: 0;
+  }
+
+  .token-meta code {
+    font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+    font-size: var(--nx-text-xs);
+    color: var(--nx-purple-soft);
+    word-break: break-all;
+  }
+
+  .token-meta span {
+    font-size: var(--nx-text-xs);
+    color: var(--nx-text-muted);
+    font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  }
+
+  .token-group-label {
+    margin: var(--nx-space-6) 0 var(--nx-space-3);
+    font-size: var(--nx-text-xs);
+    font-weight: var(--nx-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--nx-text-muted);
+  }
+
+  .token-group-label:first-of-type {
+    margin-top: 0;
+  }
+
+  .token-fonts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-3);
+    padding: var(--nx-space-5);
+    background: var(--nx-bg-card);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-lg);
+  }
+
+  .token-fonts p {
+    font-size: var(--nx-text-lg);
+    color: var(--nx-text-primary);
+  }
+
+  .token-fonts code,
+  .token-type-row code,
+  .token-weight-row code,
+  .token-spacing-row code,
+  .token-radius-item code,
+  .token-gradient-item code {
+    font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+    font-size: var(--nx-text-xs);
+    color: var(--nx-purple-soft);
+  }
+
+  .token-type-scale,
+  .token-weights,
+  .token-spacing,
+  .token-radius,
+  .token-gradients {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-3);
+    padding: var(--nx-space-5);
+    background: var(--nx-bg-card);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-lg);
+  }
+
+  .token-type-row,
+  .token-weight-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nx-space-4);
+    flex-wrap: wrap;
+  }
+
+  .token-type-sample {
+    font-family: var(--nx-font-display);
+    color: var(--nx-text-primary);
+    line-height: var(--nx-leading-tight);
+  }
+
+  .token-weight-row span {
+    color: var(--nx-text-primary);
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-lg);
+  }
+
+  .token-spacing-row {
+    display: flex;
+    align-items: center;
+    gap: var(--nx-space-4);
+  }
+
+  .token-spacing-bar {
+    height: 1rem;
+    min-width: 2px;
+    background: var(--nx-gradient-brand);
+    border-radius: var(--nx-radius-sm);
+  }
+
+  .token-radius,
+  .token-gradients {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .token-radius-item,
+  .token-gradient-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--nx-space-2);
+  }
+
+  .token-radius-box {
+    width: 5rem;
+    height: 5rem;
+    background: var(--nx-bg-elevated);
+    border: 1px solid var(--nx-border-glow);
+  }
+
+  .token-gradient-box {
+    width: 100%;
+    height: 4rem;
+    border-radius: var(--nx-radius-md);
+    border: 1px solid var(--nx-border);
+  }
+</style>

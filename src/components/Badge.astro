@@ -1,0 +1,82 @@
+---
+interface Props {
+  variant?: 'cyan' | 'purple' | 'magenta' | 'success' | 'warning' | 'danger' | 'muted';
+  size?: 'sm' | 'md';
+  dot?: boolean;
+  [key: string]: unknown;
+}
+
+const { variant = 'cyan', size = 'md', dot = false, ...rest } = Astro.props as Props;
+---
+
+<span class:list={['nx-badge', `v-${variant}`, `s-${size}`]} {...rest}>
+  {dot && <span class="nx-badge-dot" aria-hidden="true"></span>}
+  <slot />
+</span>
+
+<style>
+  .nx-badge {
+    --badge-color: var(--nx-cyan);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--nx-space-2);
+    border-radius: var(--nx-radius-full);
+    border: 1px solid color-mix(in srgb, var(--badge-color) 35%, transparent);
+    background: color-mix(in srgb, var(--badge-color) 12%, transparent);
+    color: var(--badge-color);
+    font-family: var(--nx-font-body);
+    font-weight: var(--nx-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .s-sm {
+    font-size: var(--nx-text-xs);
+    padding: 0.22rem 0.55rem;
+  }
+
+  .s-md {
+    font-size: var(--nx-text-sm);
+    padding: 0.32rem 0.7rem;
+  }
+
+  .v-cyan {
+    --badge-color: var(--nx-cyan);
+  }
+
+  .v-purple {
+    --badge-color: var(--nx-purple);
+  }
+
+  .v-magenta {
+    --badge-color: var(--nx-magenta);
+  }
+
+  .v-success {
+    --badge-color: var(--nx-success);
+  }
+
+  .v-warning {
+    --badge-color: var(--nx-warning);
+  }
+
+  .v-danger {
+    --badge-color: var(--nx-danger);
+  }
+
+  .v-muted {
+    --badge-color: var(--nx-text-muted);
+  }
+
+  .nx-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+    flex-shrink: 0;
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import SearchBar from '../../components/SearchBar.astro';
+
+const snippet = `<SearchBar />
+
+<SearchBar placeholder="Search components..." name="component" />`;
+---
+
+<BaseLayout title="SearchBar — Nexo UI Kit" description="SearchBar component usage and props for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="SearchBar"
+    subtitle="Horizontal search form that composes Input and Button with a leading magnifying glass icon."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Example</h2>
+    <div class="docs-example">
+      <SearchBar />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Custom placeholder and name</h2>
+    <div class="docs-example">
+      <SearchBar placeholder="Search components..." name="component" />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>placeholder</code></td>
+            <td><code>string</code></td>
+            <td><code>'Buscar...'</code></td>
+            <td>Placeholder text inside the search field.</td>
+          </tr>
+          <tr>
+            <td><code>name</code></td>
+            <td><code>string</code></td>
+            <td><code>'q'</code></td>
+            <td>Query parameter name submitted with the form.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

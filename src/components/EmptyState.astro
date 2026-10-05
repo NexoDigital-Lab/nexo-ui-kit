@@ -1,0 +1,79 @@
+---
+interface Props {
+  title: string;
+  message: string;
+  icon?: string;
+  [key: string]: unknown;
+}
+
+const { title, message, icon, ...rest } = Astro.props as Props;
+---
+
+<div class="nx-empty" {...rest}>
+  {
+    (icon || Astro.slots.has('icon')) && (
+      <div class="nx-empty-icon">
+        <slot name="icon">{icon}</slot>
+      </div>
+    )
+  }
+  <h3 class="nx-empty-title">{title}</h3>
+  <p class="nx-empty-message">{message}</p>
+  {
+    Astro.slots.has('action') && (
+      <div class="nx-empty-action">
+        <slot name="action" />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .nx-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--nx-space-4);
+    padding: var(--nx-space-16) var(--nx-space-6);
+  }
+
+  .nx-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--nx-radius-full);
+    background: var(--nx-bg-secondary);
+    border: 1px solid var(--nx-border);
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--nx-text-primary);
+  }
+
+  .nx-empty-title {
+    margin: 0;
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-lg);
+    font-weight: var(--nx-weight-bold);
+    color: var(--nx-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .nx-empty-message {
+    margin: 0;
+    max-width: 420px;
+    font-size: var(--nx-text-sm);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+  }
+
+  .nx-empty-action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nx-space-3);
+    justify-content: center;
+    margin-top: var(--nx-space-2);
+  }
+</style>

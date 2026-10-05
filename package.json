@@ -25,11 +25,37 @@
   "engines": {
     "node": ">=22.12.0"
   },
+  "files": [
+    "src/components",
+    "src/styles/tokens.css",
+    "src/styles/base.css",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./src/components/index.js",
+    "./tokens.css": "./src/styles/tokens.css",
+    "./base.css": "./src/styles/base.css",
+    "./Button": "./src/components/Button.astro",
+    "./Badge": "./src/components/Badge.astro",
+    "./Card": "./src/components/Card.astro",
+    "./Input": "./src/components/Input.astro",
+    "./SearchBar": "./src/components/SearchBar.astro",
+    "./SectionHeader": "./src/components/SectionHeader.astro",
+    "./Modal": "./src/components/Modal.astro",
+    "./Toast": "./src/components/Toast.astro",
+    "./Tabs": "./src/components/Tabs.astro",
+    "./Avatar": "./src/components/Avatar.astro",
+    "./EmptyState": "./src/components/EmptyState.astro"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "tokens:sync": "node scripts/sync-tokens.mjs"
+  },
+  "peerDependencies": {
+    "astro": ">=6.0.0"
   },
   "dependencies": {
     "astro": "^6.0.5"

@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Tabs from '../../components/Tabs.astro';
+
+const overviewTabs = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'usage', label: 'Usage' },
+  { id: 'api', label: 'API' },
+];
+
+const panelCopy = {
+  overview: 'High-level summary of the feature, audience and outcomes.',
+  usage: 'Step-by-step guidance with examples and recommended defaults.',
+  api: 'Props, events and integration details for the public interface.',
+};
+
+const snippet = `<Tabs
+  tabs={[
+    { id: 'overview', label: 'Overview' },
+    { id: 'usage', label: 'Usage' },
+    { id: 'api', label: 'API' },
+  ]}
+  active="usage"
+>
+  <p>Content for the active tab panel.</p>
+</Tabs>`;
+---
+
+<BaseLayout title="Tabs — Nexo UI Kit" description="Tabs component selection states and server-rendered active panel for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="Tabs"
+    subtitle="Server-rendered tab list with gradient underline for the active tab and a single panel."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Active: overview</h2>
+    <div class="docs-example docs-example-stack">
+      <Tabs tabs={overviewTabs} active="overview">
+        <p>{panelCopy.overview}</p>
+      </Tabs>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Active: usage</h2>
+    <div class="docs-example docs-example-stack">
+      <Tabs tabs={overviewTabs} active="usage">
+        <p>{panelCopy.usage}</p>
+      </Tabs>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Active: api</h2>
+    <div class="docs-example docs-example-stack">
+      <Tabs tabs={overviewTabs} active="api">
+        <p>{panelCopy.api}</p>
+      </Tabs>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Defaults to the first tab</h2>
+    <div class="docs-example docs-example-stack">
+      <Tabs tabs={overviewTabs}>
+        <p>Without an <code class="docs-inline-code">active</code> prop, the first tab is selected.</p>
+      </Tabs>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>tabs</code></td>
+            <td><code>&#123; id: string; label: string &#125;[]</code></td>
+            <td>—</td>
+            <td>Ordered list of tab buttons rendered in the tablist.</td>
+          </tr>
+          <tr>
+            <td><code>active</code></td>
+            <td><code>string</code></td>
+            <td>First tab's <code>id</code></td>
+            <td>Id of the selected tab. Only the active panel's slot content is rendered.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="docs-note">
+      Selection is server-rendered through the <code class="docs-inline-code">active</code> prop —
+      no client script. Instantiate the component multiple times to show different active states.
+    </p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import EmptyState from '../../components/EmptyState.astro';
+import Button from '../../components/Button.astro';
+
+const snippet = `<EmptyState
+  icon="🚀"
+  title="No projects yet"
+  message="Create your first project to start collaborating with your team."
+>
+  <Button slot="action" variant="primary">Create project</Button>
+</EmptyState>
+
+<EmptyState
+  title="Nothing to show here"
+  message="Try adjusting your filters or check back later."
+/>`;
+---
+
+<BaseLayout title="EmptyState — Nexo UI Kit" description="EmptyState component icon, title, message and action slot examples for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="EmptyState"
+    subtitle="Centered placeholder for empty lists and zero-data views, with an icon circle and optional action."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">With icon and action</h2>
+    <div class="docs-example docs-example-stack">
+      <EmptyState
+        icon="🚀"
+        title="No projects yet"
+        message="Create your first project to start collaborating with your team."
+      >
+        <Button slot="action" variant="primary">Create project</Button>
+        <Button slot="action" variant="secondary" size="sm">Import from Git</Button>
+      </EmptyState>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Without action</h2>
+    <div class="docs-example docs-example-stack">
+      <EmptyState
+        icon="🔍"
+        title="No results"
+        message="Try adjusting your filters or check back later."
+      />
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Without icon</h2>
+    <div class="docs-example docs-example-stack">
+      <EmptyState
+        title="Nothing here yet"
+        message="Content will appear as soon as it is available."
+      >
+        <Button slot="action" variant="ghost" size="sm">Refresh</Button>
+      </EmptyState>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Custom icon slot</h2>
+    <div class="docs-example docs-example-stack">
+      <EmptyState
+        title="Inbox zero"
+        message="You are all caught up. New notifications will show up here."
+      >
+        <span slot="icon" class="empty-state-custom-icon" aria-hidden="true">✦</span>
+        <Button slot="action" variant="secondary" size="sm">View archive</Button>
+      </EmptyState>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>title</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Display-font heading for the empty state.</td>
+          </tr>
+          <tr>
+            <td><code>message</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Supporting text, capped at 420px width.</td>
+          </tr>
+          <tr>
+            <td><code>icon</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Emoji or short text shown inside the 72px icon circle.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="docs-note">
+      Named slots: <code class="docs-inline-code">icon</code> replaces the icon circle content,
+      <code class="docs-inline-code">action</code> renders the optional centered action area.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .empty-state-custom-icon {
+    font-size: 1.75rem;
+    color: var(--nx-cyan);
+  }
+</style>

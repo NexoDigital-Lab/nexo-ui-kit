@@ -1,0 +1,171 @@
+---
+interface Props {
+  open?: boolean;
+  title: string;
+  size?: 'sm' | 'md' | 'lg';
+  closable?: boolean;
+  [key: string]: unknown;
+}
+
+const {
+  open = false,
+  title,
+  size = 'md',
+  closable = true,
+  ...rest
+} = Astro.props as Props;
+---
+
+<div class="nx-modal" data-nx-modal hidden={open ? undefined : ''} {...rest}>
+  <div class="nx-modal-backdrop" data-nx-modal-backdrop></div>
+  <div class:list={['nx-modal-panel', `s-${size}`]} role="dialog" aria-modal="true" aria-label={title}>
+    <div class="nx-modal-header">
+      <h3 class="nx-modal-title">{title}</h3>
+      {
+        closable && (
+          <button type="button" class="nx-modal-close" data-nx-modal-close aria-label="Close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        )
+      }
+    </div>
+    <div class="nx-modal-body">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const hideModal = (modal: Element | null) => {
+    if (modal) modal.setAttribute('hidden', '');
+  };
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    if (target.closest('[data-nx-modal-close]')) {
+      hideModal(target.closest('[data-nx-modal]'));
+      return;
+    }
+
+    if (target.matches('[data-nx-modal-backdrop]')) {
+      hideModal(target.closest('[data-nx-modal]'));
+    }
+  });
+</script>
+
+<style>
+  .nx-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--nx-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--nx-space-4);
+  }
+
+  .nx-modal[hidden] {
+    display: none;
+  }
+
+  .nx-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .nx-modal-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: min(85vh, 100%);
+    overflow: auto;
+    background: var(--nx-bg-card);
+    border: 1px solid var(--nx-border);
+    border-radius: var(--nx-radius-xl);
+    box-shadow: var(--nx-shadow-card);
+  }
+
+  .s-sm {
+    max-width: 400px;
+  }
+
+  .s-md {
+    max-width: 560px;
+  }
+
+  .s-lg {
+    max-width: 720px;
+  }
+
+  .nx-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--nx-space-4);
+    padding: var(--nx-space-5) var(--nx-space-6);
+    border-bottom: 1px solid var(--nx-border);
+  }
+
+  .nx-modal-title {
+    margin: 0;
+    font-family: var(--nx-font-display);
+    font-size: var(--nx-text-lg);
+    font-weight: var(--nx-weight-bold);
+    color: var(--nx-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .nx-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: var(--nx-radius-md);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--nx-text-secondary);
+    cursor: pointer;
+    transition:
+      background var(--nx-duration-fast) var(--nx-ease),
+      border-color var(--nx-duration-fast) var(--nx-ease),
+      color var(--nx-duration-fast) var(--nx-ease);
+  }
+
+  .nx-modal-close:hover {
+    background: color-mix(in srgb, var(--nx-danger) 12%, transparent);
+    border-color: color-mix(in srgb, var(--nx-danger) 30%, transparent);
+    color: var(--nx-danger);
+  }
+
+  .nx-modal-close:focus-visible {
+    outline: 2px solid var(--nx-cyan);
+    outline-offset: 2px;
+  }
+
+  .nx-modal-body {
+    padding: var(--nx-space-6);
+    color: var(--nx-text-secondary);
+    font-size: var(--nx-text-base);
+    line-height: var(--nx-leading-normal);
+  }
+</style>

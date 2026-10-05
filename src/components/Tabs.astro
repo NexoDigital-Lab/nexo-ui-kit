@@ -1,0 +1,95 @@
+---
+interface Props {
+  tabs: { id: string; label: string }[];
+  active?: string;
+  [key: string]: unknown;
+}
+
+const { tabs, active, ...rest } = Astro.props as Props;
+
+const activeTab = active ?? tabs[0]?.id;
+const uid = `nx-tabs-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="nx-tabs" {...rest}>
+  <div class="nx-tabs-list" role="tablist">
+    {
+      tabs.map((tab) => (
+        <button
+          type="button"
+          class:list={['nx-tab', { active: tab.id === activeTab }]}
+          role="tab"
+          id={`${uid}-tab-${tab.id}`}
+          aria-selected={tab.id === activeTab ? 'true' : 'false'}
+          aria-controls={`${uid}-panel-${tab.id}`}
+          tabindex={tab.id === activeTab ? 0 : -1}
+        >
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+  <div
+    class="nx-tabs-panel"
+    role="tabpanel"
+    id={`${uid}-panel-${activeTab}`}
+    aria-labelledby={`${uid}-tab-${activeTab}`}
+  >
+    <slot />
+  </div>
+</div>
+
+<style>
+  .nx-tabs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nx-space-1);
+    border-bottom: 1px solid var(--nx-border);
+  }
+
+  .nx-tab {
+    position: relative;
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: var(--nx-space-3) var(--nx-space-4);
+    font-family: var(--nx-font-body);
+    font-size: var(--nx-text-sm);
+    font-weight: var(--nx-weight-medium);
+    color: var(--nx-text-secondary);
+    cursor: pointer;
+    transition: color var(--nx-duration-fast) var(--nx-ease);
+  }
+
+  .nx-tab:hover {
+    color: var(--nx-text-primary);
+  }
+
+  .nx-tab:focus-visible {
+    outline: 2px solid var(--nx-cyan);
+    outline-offset: -2px;
+    border-radius: var(--nx-radius-sm);
+  }
+
+  .nx-tab.active {
+    color: var(--nx-text-primary);
+  }
+
+  .nx-tab.active::after {
+    content: '';
+    position: absolute;
+    left: var(--nx-space-2);
+    right: var(--nx-space-2);
+    bottom: -1px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--nx-gradient-brand);
+  }
+
+  .nx-tabs-panel {
+    padding: var(--nx-space-5) var(--nx-space-1);
+    color: var(--nx-text-secondary);
+    font-size: var(--nx-text-sm);
+    line-height: var(--nx-leading-normal);
+  }
+</style>

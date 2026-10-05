@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Toast from '../../components/Toast.astro';
+
+const positions = ['top-right', 'bottom-right', 'top-left', 'bottom-left'] as const;
+
+const snippet = `<Toast variant="success" title="Project created" message="Published successfully." />
+
+<Toast variant="danger" title="Payment failed" message="Your card was declined." />
+
+<Toast variant="warning" position="bottom-left" title="Storage almost full" message="85% of quota used." />
+
+<Toast demo variant="info" title="Inline demo" message="Renders static for documentation." />`;
+---
+
+<BaseLayout title="Toast — Nexo UI Kit" description="Toast component variants, positions and dismiss behavior for the Nexo UI Kit.">
+  <SectionHeader
+    badge="Components"
+    title="Toast"
+    subtitle="Fixed-position notifications with accent variants, icon cues and a dismiss control."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Variants</h2>
+    <div class="docs-example docs-example-stack">
+      <p class="docs-example-label">demo mode — rendered inline for documentation</p>
+      <div class="toast-demo-grid">
+        <Toast demo variant="success" title="Project created" message="Your project was published successfully." />
+        <Toast demo variant="warning" title="Storage almost full" message="You have used 85% of your quota." />
+        <Toast demo variant="danger" title="Payment failed" message="Your card was declined. Try another method." />
+        <Toast demo variant="info" title="New version available" message="Update to v2.4.0 to get the latest features." />
+      </div>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Positions</h2>
+    <div class="docs-example docs-example-stack">
+      <p class="docs-note">
+        The <code class="docs-inline-code">position</code> prop anchors the toast to a viewport corner.
+        The examples below use <code class="docs-inline-code">demo</code> so they render inline; in
+        production they would be <code class="docs-inline-code">position: fixed</code>.
+      </p>
+      {
+        positions.map((position) => (
+          <div class="toast-position-row">
+            <p class="docs-example-label">{position}</p>
+            <Toast
+              demo
+              position={position}
+              variant="info"
+              title={`${position} toast`}
+              message="Anchored to this corner when demo is false."
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">With and without message</h2>
+    <div class="docs-example docs-example-stack">
+      <div class="toast-demo-grid">
+        <Toast demo variant="success" title="Saved" />
+        <Toast demo variant="info" title="Synced" message="All changes are up to date." />
+      </div>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>variant</code></td>
+            <td><code>'success' | 'warning' | 'danger' | 'info'</code></td>
+            <td><code>'info'</code></td>
+            <td>Accent color, icon glyph and role (<code>alert</code> for danger, <code>status</code> otherwise).</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Bold primary text of the notification.</td>
+          </tr>
+          <tr>
+            <td><code>message</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Optional secondary detail line.</td>
+          </tr>
+          <tr>
+            <td><code>position</code></td>
+            <td><code>'top-right' | 'bottom-right' | 'top-left' | 'bottom-left'</code></td>
+            <td><code>'top-right'</code></td>
+            <td>Viewport corner used when the toast is fixed-position.</td>
+          </tr>
+          <tr>
+            <td><code>demo</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Switches to <code>position: static</code> so docs pages can lay toasts out inline.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .toast-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--nx-space-4);
+    width: 100%;
+  }
+
+  .toast-position-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-2);
+    width: 100%;
+  }
+</style>

@@ -52,6 +52,11 @@ Cuando el kit madure se publicará como package npm (`@nexodigital/ui-kit`) y el
 | `Input` | text, email, password, search · label opcional · estado error | `/components/input` |
 | `SearchBar` | compone Input + Button · icono lupa | `/components/search-bar` |
 | `SectionHeader` | badge + title + subtitle · `centered` · `gradientTitle` | `/components/section-header` |
+| `Modal` | open · sm/md/lg · `closable` · overlay + panel | `/components/modal` |
+| `Toast` | success, warning, danger, info · 4 posiciones · `demo` inline | `/components/toast` |
+| `Tabs` | lista de tabs + `active` id · panel server-rendered | `/components/tabs` |
+| `Avatar` | sm/md/lg/xl · imagen o fallback de iniciales | `/components/avatar` |
+| `EmptyState` | icono + title + message · slot `action` | `/components/empty-state` |
 
 ## Tokens principales
 

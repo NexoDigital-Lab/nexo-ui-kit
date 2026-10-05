@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Modal from '../../components/Modal.astro';
+import Button from '../../components/Button.astro';
+
+const snippet = `<Modal open title="Create project" size="md">
+  <p>Modal body content goes here.</p>
+</Modal>
+
+<Modal title="Small confirmation" size="sm" closable={false}>
+  <p>Compact dialog without a close button.</p>
+</Modal>
+
+<Modal title="Wide layout" size="lg">
+  <p>Large dialog for rich content.</p>
+</Modal>`;
+---
+
+<BaseLayout
+  title="Modal — Nexo UI Kit"
+  description="Modal component overlay, sizes and closable behavior for the Nexo UI Kit."
+>
+  <SectionHeader
+    badge="Components"
+    title="Modal"
+    subtitle="Overlay dialog with backdrop scrim, size variants and an optional close button."
+  />
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Live demo</h2>
+    <div class="docs-example">
+      <Button id="modal-demo-open">Open modal</Button>
+    </div>
+    <Modal id="modal-demo" title="Live modal demo" size="md">
+      <p class="modal-demo-text">
+        This modal was opened by the button above. Click the backdrop, the X, or
+        the Close action to dismiss it.
+      </p>
+      <div class="modal-demo-actions">
+        <Button variant="ghost" size="sm" data-nx-modal-close>Close</Button>
+        <Button variant="primary" size="sm">Confirm</Button>
+      </div>
+    </Modal>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Sizes</h2>
+    <div class="docs-example docs-example-stack modal-static">
+      <p class="docs-example-label">size="sm" — max-width 400px</p>
+      <Modal open title="Small modal" size="sm" closable={false}>
+        <p class="modal-demo-text">Compact dialog for confirmations and short forms.</p>
+      </Modal>
+      <p class="docs-example-label">size="md" — max-width 560px (default)</p>
+      <Modal open title="Medium modal" size="md" closable={false}>
+        <p class="modal-demo-text">Default dialog size for most content.</p>
+      </Modal>
+      <p class="docs-example-label">size="lg" — max-width 720px</p>
+      <Modal open title="Large modal" size="lg" closable={false}>
+        <p class="modal-demo-text">Wide dialog for rich content and multi-column layouts.</p>
+      </Modal>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Closable vs locked</h2>
+    <div class="docs-example modal-static">
+      <div class="modal-locked-demo">
+        <p class="docs-example-label">closable={false} — no X button</p>
+        <Modal open title="Locked dialog" size="sm" closable={false}>
+          <p class="modal-demo-text">Use for critical flows that must be confirmed explicitly.</p>
+        </Modal>
+      </div>
+      <div class="modal-locked-demo">
+        <p class="docs-example-label">closable — X button present</p>
+        <Modal open title="Closable dialog" size="sm">
+          <p class="modal-demo-text">Default behavior: the X button dismisses the dialog.</p>
+        </Modal>
+      </div>
+    </div>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Usage</h2>
+    <pre class="docs-code"><code>{snippet}</code></pre>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="docs-h2">Props</h2>
+    <div class="docs-table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>open</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>When false the modal renders with the <code>hidden</code> attribute.</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td><code>string</code></td>
+            <td>—</td>
+            <td>Dialog title rendered in the header bar.</td>
+          </tr>
+          <tr>
+            <td><code>size</code></td>
+            <td><code>'sm' | 'md' | 'lg'</code></td>
+            <td><code>'md'</code></td>
+            <td>Max width of the panel: 400px, 560px or 720px.</td>
+          </tr>
+          <tr>
+            <td><code>closable</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Shows the X close button in the header.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="docs-note">
+      A small inline script handles the close button and backdrop clicks via
+      <code class="docs-inline-code">data-*</code> attributes — no framework required.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const openButton = document.getElementById('modal-demo-open');
+  const modal = document.getElementById('modal-demo');
+
+  openButton?.addEventListener('click', () => {
+    modal?.removeAttribute('hidden');
+  });
+</script>
+
+<style>
+  .modal-static :global(.nx-modal) {
+    position: relative !important;
+    inset: auto !important;
+    z-index: auto !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .modal-static :global(.nx-modal-backdrop) {
+    display: none !important;
+  }
+
+  .modal-locked-demo {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--nx-space-3);
+  }
+
+  .modal-demo-text {
+    margin: 0;
+    font-size: var(--nx-text-sm);
+    color: var(--nx-text-secondary);
+    line-height: var(--nx-leading-normal);
+  }
+
+  .modal-demo-actions {
+    display: flex;
+    gap: var(--nx-space-3);
+    margin-top: var(--nx-space-5);
+  }
+</style>

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discusiones del proyecto
+    url: https://github.com/NexoDigital-Lab/nexo-ui-kit/discussions
+    about: Preguntas generales, ideas y conversación sobre el kit.
+  - name: Issues del repositorio
+    url: https://github.com/NexoDigital-Lab/nexo-ui-kit/issues
+    about: Reportes de bug y solicitudes de funcionalidad con plantillas.

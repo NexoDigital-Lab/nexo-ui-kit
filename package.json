@@ -54,10 +54,7 @@
     "astro": "astro",
     "tokens:sync": "node scripts/sync-tokens.mjs"
   },
-  "peerDependencies": {
-    "astro": ">=6.0.0"
-  },
   "dependencies": {
-    "astro": "^6.0.5"
+    "astro": "^7.3.5"
   }
 }

@@ -56,15 +56,23 @@ Direct work-unit commits on `master`. Repo convention: 2 existing commits, both 
 
 ## Progress
 - T1: **done** — commit `a4e2e77` (15 files, 325+/325-). All docs UI copy in neutral professional Spanish, `lang="es"`, build green (13 pages). Code identifiers, prop names, snippets left in English per contract.
-- T2: pending (GlowOrb + ParticleField + /components/background + wiring)
-- T3: pending (LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, .github templates)
-- T4: pending (build verification + readback)
-- T5: pending (work-unit commit identities)
+- T2: **done** — commit `634c26b` (7 files, 621+). GlowOrb.astro, ParticleField.astro, /components/background docs page, wired into index.js, package.json exports, nav, landing grid.
+- T3: **done** — commit `bafc723` (8 files, 239+). LICENSE (MIT), CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, .github issue/PR templates — all in neutral professional Spanish.
+- T4: **done** — `npm run build` green after every work unit; final build 14 pages. Structural readback confirmed exports, nav, governance files, favicon in dist.
+- T5: **done** — all work-unit commit identities recorded below.
+- Addendum: **done** — commit `31f982c` favicon (logo.webp + apple-touch-icon 192px copied from Nexo-Digital, link tags in BaseLayout head).
 
 ## Work-unit commits
 - `4602661` fix: guard Avatar initials, add Modal Escape/focus trap, make Tabs interactive (RDD correction, 4 files, 102+/36-)
 - `a4e2e77` docs: translate UI copy to Spanish across docs pages and README (T1, 15 files)
-- chore: upgrade astro to ^7.3.5 (separate work unit; was dirty worktree from another process; required before T2 can cleanly add package.json exports)
+- `1d82cda` chore: upgrade astro to ^7.3.5 and regenerate lockfile
+- `452eedd` docs: add ODD task document for docs-i18n-opensource feature
+- `634c26b` feat: add GlowOrb and ParticleField background components with docs (T2)
+- `bafc723` docs: add opensource governance files (T3)
+- `31f982c` feat: add Nexo Digital favicon and apple-touch-icon (addendum)
+
+## Feature status: COMPLETE
+All tasks closed. Repo is Spanish-documented, has background components with usage docs, opensource governance files, favicon, and green builds. RDD lineage review-db7ebe6324136161 is terminal (captured_artifacts_unverifiable); assess on correction commit 4602661: review_due=false (under_budget).
 
 ## Notes
 - Translation register: neutral professional Spanish (persona scope rule for artifacts). Component prop names, CSS class names, code identifiers, and code snippets stay in English/code.

@@ -13,6 +13,8 @@ npm run dev
 
 Abre `http://localhost:4321` — tienes la landing, la referencia de tokens y cada componente con ejemplos en vivo.
 
+Demo en producción: https://nexo-ui-kit-chi.vercel.app
+
 ## Consumo en tu proyecto
 
 ### Tokens (siempre)
@@ -57,6 +59,8 @@ Cuando el kit madure se publicará como paquete npm (`@nexodigital/ui-kit`) y el
 | `Tabs` | lista de tabs + `active` id · panel server-rendered | `/components/tabs` |
 | `Avatar` | sm/md/lg/xl · imagen o fallback de iniciales | `/components/avatar` |
 | `EmptyState` | icono + title + message · slot `action` | `/components/empty-state` |
+| `GlowOrb` | sm/md/lg/xl · cyan/purple/magenta/brand · intensity | `/components/background` |
+| `ParticleField` | canvas de partículas · density/speed · reduced-motion | `/components/background` |
 
 ## Tokens principales
 
@@ -109,8 +113,6 @@ src/
 ## Próximos pasos
 
 - [ ] Publicar como `@nexodigital/ui-kit` en npm
-- [ ] Script de sincronización de tokens hacia Nexo-Digital
-- [ ] Más componentes: Modal, Toast, Tabs, Avatar, EmptyState
 - [ ] Modo light (bajo prioridad)
 
 ## Licencia

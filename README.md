@@ -1,8 +1,8 @@
 # Nexo UI Kit
 
-Design system y componentes Astro para el ecosistema **Nexo Digital Lab**. Tokens de diseño como fuente única de verdad y componentes standalone, sin ataduras a Prisma, Supabase ni la app de Nexo Digital.
+Sistema de diseño y componentes Astro para el ecosistema **Nexo Digital Lab**. Tokens de diseño como fuente única de verdad y componentes independientes, sin ataduras a Prisma, Supabase ni la app de Nexo Digital.
 
-## Quick path
+## Inicio rápido
 
 ```bash
 git clone https://github.com/NexoDigital-Lab/nexo-ui-kit.git
@@ -11,13 +11,13 @@ npm install
 npm run dev
 ```
 
-Abrí `http://localhost:4321` — tenés la landing, la referencia de tokens y cada componente con ejemplos live.
+Abre `http://localhost:4321` — tienes la landing, la referencia de tokens y cada componente con ejemplos en vivo.
 
 ## Consumo en tu proyecto
 
 ### Tokens (siempre)
 
-Copiá `src/styles/tokens.css` o importalo como CSS global. Todos los valores visuales del kit se resuelven con variables `--nx-*`.
+Copia `src/styles/tokens.css` o impórtalo como CSS global. Todos los valores visuales del kit se resuelven con variables `--nx-*`.
 
 ```css
 @import 'path/to/nexo-ui-kit/src/styles/tokens.css';
@@ -25,11 +25,11 @@ Copiá `src/styles/tokens.css` o importalo como CSS global. Todos los valores vi
 
 ### Componentes
 
-Hoy el consumo es **copy-paste** de los `.astro` de `src/components/`. No dependen de nada más que los tokens:
+Hoy el consumo es **copiar y pegar** de los `.astro` de `src/components/`. No dependen de nada más que los tokens:
 
-1. Copiá el componente (ej. `Button.astro`) a tu proyecto
-2. Asegurate de que `tokens.css` esté cargado
-3. Importalo y usalo
+1. Copia el componente (p. ej. `Button.astro`) a tu proyecto
+2. Asegúrate de que `tokens.css` esté cargado
+3. Impórtalo y úsalo
 
 ```astro
 ---
@@ -40,11 +40,11 @@ import Button from '../components/Button.astro';
 <Button variant="secondary" size="sm">Cancelar</Button>
 ```
 
-Cuando el kit madure se publicará como package npm (`@nexodigital/ui-kit`) y el copy-paste queda para casos edge.
+Cuando el kit madure se publicará como paquete npm (`@nexodigital/ui-kit`) y el copiar y pegar quedará para casos extremos.
 
 ## Componentes
 
-| Componente | Variantes / props clave | Docs |
+| Componente | Variantes / props clave | Documentación |
 |---|---|---|
 | `Button` | primary, secondary, ghost, danger · sm/md/lg · `href` renderiza `<a>` | `/components/button` |
 | `Badge` | cyan, purple, magenta, success, warning, danger, muted · sm/md · dot | `/components/badge` |
@@ -79,9 +79,9 @@ Referencia visual completa en `/tokens`.
 ```
 src/
 ├── styles/
-│   ├── tokens.css      ← fuente única de design tokens
+│   ├── tokens.css      ← fuente única de tokens de diseño
 │   ├── base.css        ← reset + defaults, importa tokens
-│   └── docs.css        ← chrome del sitio de documentación
+│   └── docs.css        ← UI del sitio de documentación
 ├── components/         ← componentes Astro standalone
 ├── layouts/
 │   └── BaseLayout.astro

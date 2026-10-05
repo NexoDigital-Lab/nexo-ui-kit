@@ -4,15 +4,15 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import Tabs from '../../components/Tabs.astro';
 
 const overviewTabs = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'usage', label: 'Usage' },
+  { id: 'overview', label: 'Resumen' },
+  { id: 'usage', label: 'Uso' },
   { id: 'api', label: 'API' },
 ];
 
 const panelCopy = {
-  overview: 'High-level summary of the feature, audience and outcomes.',
-  usage: 'Step-by-step guidance with examples and recommended defaults.',
-  api: 'Props, events and integration details for the public interface.',
+  overview: 'Resumen general de la funcionalidad, la audiencia y los resultados.',
+  usage: 'Guía paso a paso con ejemplos y valores predeterminados recomendados.',
+  api: 'Propiedades, eventos y detalles de integración de la interfaz pública.',
 };
 
 const snippet = `<Tabs
@@ -29,15 +29,15 @@ const snippet = `<Tabs
 </Tabs>`;
 ---
 
-<BaseLayout title="Tabs — Nexo UI Kit" description="Tabs component selection states and client-side panel switching for the Nexo UI Kit.">
+<BaseLayout title="Tabs — Nexo UI Kit" description="Estados de selección y cambio de panel en el cliente del componente Tabs de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Tabs"
-    subtitle="Interactive tab list with gradient underline for the active tab and client-side panel switching."
+    subtitle="Lista de pestañas interactiva con subrayado en degradado para la pestaña activa y cambio de panel en el cliente."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Active: overview</h2>
+    <h2 class="docs-h2">Activo: resumen</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="overview">
         <p slot="overview">{panelCopy.overview}</p>
@@ -48,7 +48,7 @@ const snippet = `<Tabs
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Active: usage</h2>
+    <h2 class="docs-h2">Activo: uso</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="usage">
         <p slot="overview">{panelCopy.overview}</p>
@@ -59,7 +59,7 @@ const snippet = `<Tabs
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Active: api</h2>
+    <h2 class="docs-h2">Activo: api</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs} active="api">
         <p slot="overview">{panelCopy.overview}</p>
@@ -70,10 +70,10 @@ const snippet = `<Tabs
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Defaults to the first tab</h2>
+    <h2 class="docs-h2">Selecciona la primera pestaña por defecto</h2>
     <div class="docs-example docs-example-stack">
       <Tabs tabs={overviewTabs}>
-        <p slot="overview">Without an <code class="docs-inline-code">active</code> prop, the first tab is selected.</p>
+        <p slot="overview">Sin una prop <code class="docs-inline-code">active</code>, se selecciona la primera pestaña.</p>
         <p slot="usage">{panelCopy.usage}</p>
         <p slot="api">{panelCopy.api}</p>
       </Tabs>
@@ -81,7 +81,7 @@ const snippet = `<Tabs
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -92,9 +92,9 @@ const snippet = `<Tabs
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -102,19 +102,19 @@ const snippet = `<Tabs
             <td><code>tabs</code></td>
             <td><code>&#123; id: string; label: string &#125;[]</code></td>
             <td>—</td>
-            <td>Ordered list of tab buttons rendered in the tablist.</td>
+            <td>Lista ordenada de botones de pestaña renderizados en el tablist.</td>
           </tr>
           <tr>
             <td><code>active</code></td>
             <td><code>string</code></td>
-            <td>First tab's <code>id</code></td>
-            <td>Id of the initially selected tab.</td>
+            <td><code>id</code> de la primera pestaña</td>
+            <td>id de la pestaña seleccionada inicialmente.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="docs-note">
-      Click a tab or use arrow keys to switch panels. Pass named slots per tab id so every panel has content.
+      Haz clic en una pestaña o usa las teclas de flecha para cambiar de panel. Pasa slots con nombre por cada id de pestaña para que todos los paneles tengan contenido.
     </p>
   </section>
 </BaseLayout>

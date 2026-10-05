@@ -45,13 +45,13 @@ const textTokens = [
 ];
 
 const typeScale = [
-  { name: '--nx-text-2xl', size: 'var(--nx-text-2xl)', sample: 'Display 2XL' },
-  { name: '--nx-text-xl', size: 'var(--nx-text-xl)', sample: 'Display XL' },
-  { name: '--nx-text-lg', size: 'var(--nx-text-lg)', sample: 'Heading large' },
-  { name: '--nx-text-md', size: 'var(--nx-text-md)', sample: 'Body large' },
-  { name: '--nx-text-base', size: 'var(--nx-text-base)', sample: 'Body base' },
-  { name: '--nx-text-sm', size: 'var(--nx-text-sm)', sample: 'Body small' },
-  { name: '--nx-text-xs', size: 'var(--nx-text-xs)', sample: 'Caption extra small' },
+  { name: '--nx-text-2xl', size: 'var(--nx-text-2xl)', sample: 'Título 2XL' },
+  { name: '--nx-text-xl', size: 'var(--nx-text-xl)', sample: 'Título XL' },
+  { name: '--nx-text-lg', size: 'var(--nx-text-lg)', sample: 'Encabezado grande' },
+  { name: '--nx-text-md', size: 'var(--nx-text-md)', sample: 'Cuerpo grande' },
+  { name: '--nx-text-base', size: 'var(--nx-text-base)', sample: 'Cuerpo base' },
+  { name: '--nx-text-sm', size: 'var(--nx-text-sm)', sample: 'Cuerpo pequeño' },
+  { name: '--nx-text-xs', size: 'var(--nx-text-xs)', sample: 'Leyenda extra pequeña' },
 ];
 
 const weights = [
@@ -91,15 +91,15 @@ const gradientSamples = [
 ];
 ---
 
-<BaseLayout title="Design Tokens — Nexo UI Kit" description="Complete reference of the --nx-* design tokens: colors, typography, spacing, radius and gradients.">
+<BaseLayout title="Tokens de diseño — Nexo UI Kit" description="Referencia completa de los tokens de diseño --nx-*: colores, tipografía, espaciado, radio y degradados.">
   <SectionHeader
-    badge="Foundation"
-    title="Design Tokens"
-    subtitle="Every visual value in the Nexo UI Kit comes from the --nx-* custom properties defined in tokens.css."
+    badge="Fundación"
+    title="Tokens de diseño"
+    subtitle="Todos los valores visuales de Nexo UI Kit provienen de las propiedades personalizadas --nx-* definidas en tokens.css."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Brand colors</h2>
+    <h2 class="docs-h2">Colores de marca</h2>
     <div class="token-swatches">
       {
         brandColors.map((c) => (
@@ -116,7 +116,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Soft variants</h2>
+    <h2 class="docs-h2">Variantes suaves</h2>
     <div class="token-swatches">
       {
         softColors.map((c) => (
@@ -133,7 +133,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Semantic status</h2>
+    <h2 class="docs-h2">Estados semánticos</h2>
     <div class="token-swatches">
       {
         semanticColors.map((c) => (
@@ -150,7 +150,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Surfaces</h2>
+    <h2 class="docs-h2">Superficies</h2>
     <div class="token-swatches">
       {
         surfaceColors.map((c) => (
@@ -167,7 +167,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Borders</h2>
+    <h2 class="docs-h2">Bordes</h2>
     <div class="token-swatches">
       {
         borderTokens.map((c) => (
@@ -184,7 +184,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Text colors</h2>
+    <h2 class="docs-h2">Colores de texto</h2>
     <div class="token-swatches">
       {
         textTokens.map((c) => (
@@ -201,14 +201,14 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Typography</h2>
-    <p class="token-group-label">Fonts</p>
+    <h2 class="docs-h2">Tipografía</h2>
+    <p class="token-group-label">Fuentes</p>
     <div class="token-fonts">
       <p style="font-family: var(--nx-font-body)">Inter — <code>--nx-font-body</code></p>
       <p style="font-family: var(--nx-font-display)">Outfit — <code>--nx-font-display</code></p>
     </div>
 
-    <p class="token-group-label">Type scale</p>
+    <p class="token-group-label">Escala tipográfica</p>
     <div class="token-type-scale">
       {
         typeScale.map((t) => (
@@ -220,12 +220,12 @@ const gradientSamples = [
       }
     </div>
 
-    <p class="token-group-label">Weights</p>
+    <p class="token-group-label">Pesos</p>
     <div class="token-weights">
       {
         weights.map((w) => (
           <div class="token-weight-row">
-            <span style={`font-weight: ${w.value}`}>The quick brown fox</span>
+            <span style={`font-weight: ${w.value}`}>El veloz murciélago hindú comía feliz cardillo y kiwi</span>
             <code>{w.name} ({w.value})</code>
           </div>
         ))
@@ -234,7 +234,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Spacing scale</h2>
+    <h2 class="docs-h2">Escala de espaciado</h2>
     <div class="token-spacing">
       {
         spacingScale.map((s) => (
@@ -248,7 +248,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Radius</h2>
+    <h2 class="docs-h2">Radio</h2>
     <div class="token-radius">
       {
         radiusSamples.map((r) => (
@@ -262,7 +262,7 @@ const gradientSamples = [
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Gradients</h2>
+    <h2 class="docs-h2">Degradados</h2>
     <div class="token-gradients">
       {
         gradientSamples.map((g) => (

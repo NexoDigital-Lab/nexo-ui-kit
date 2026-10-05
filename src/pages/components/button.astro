@@ -17,34 +17,34 @@ const snippet = `<Button variant="primary" size="md">Click me</Button>
 <Button variant="primary" size="sm" disabled>Disabled</Button>`;
 ---
 
-<BaseLayout title="Button — Nexo UI Kit" description="Button component variants, sizes and usage for the Nexo UI Kit.">
+<BaseLayout title="Button — Nexo UI Kit" description="Variantes, tamaños y uso del componente Button de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Button"
-    subtitle="Action trigger with gradient, outline, ghost and danger variants in three sizes."
+    subtitle="Disparador de acciones con variantes gradiente, outline, ghost y danger en tres tamaños."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Variants</h2>
+    <h2 class="docs-h2">Variantes</h2>
     <div class="docs-example">
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
+      <Button variant="primary">Primario</Button>
+      <Button variant="secondary">Secundario</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="danger">Danger</Button>
+      <Button variant="danger">Peligro</Button>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Sizes</h2>
+    <h2 class="docs-h2">Tamaños</h2>
     <div class="docs-example">
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
+      <Button size="sm">Pequeño</Button>
+      <Button size="md">Mediano</Button>
+      <Button size="lg">Grande</Button>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">All combinations</h2>
+    <h2 class="docs-h2">Todas las combinaciones</h2>
     <div class="docs-example docs-example-stack">
       {
         variants.map((variant) => (
@@ -62,15 +62,15 @@ const snippet = `<Button variant="primary" size="md">Click me</Button>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Link and disabled</h2>
+    <h2 class="docs-h2">Enlace y deshabilitado</h2>
     <div class="docs-example">
-      <Button href="/tokens" variant="secondary">Link button</Button>
-      <Button variant="primary" disabled>Disabled</Button>
+      <Button href="/tokens" variant="secondary">Botón con enlace</Button>
+      <Button variant="primary" disabled>Deshabilitado</Button>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -81,9 +81,9 @@ const snippet = `<Button variant="primary" size="md">Click me</Button>
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -91,31 +91,31 @@ const snippet = `<Button variant="primary" size="md">Click me</Button>
             <td><code>variant</code></td>
             <td><code>'primary' | 'secondary' | 'ghost' | 'danger'</code></td>
             <td><code>'primary'</code></td>
-            <td>Visual style of the button.</td>
+            <td>Estilo visual del botón.</td>
           </tr>
           <tr>
             <td><code>size</code></td>
             <td><code>'sm' | 'md' | 'lg'</code></td>
             <td><code>'md'</code></td>
-            <td>Padding and font size.</td>
+            <td>Relleno y tamaño de fuente.</td>
           </tr>
           <tr>
             <td><code>href</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Renders the button as an <code>&lt;a&gt;</code> link when provided.</td>
+            <td>Renderiza el botón como enlace <code>&lt;a&gt;</code> cuando se proporciona.</td>
           </tr>
           <tr>
             <td><code>type</code></td>
             <td><code>'button' | 'submit' | 'reset'</code></td>
             <td><code>'button'</code></td>
-            <td>Native button type (ignored when <code>href</code> is set).</td>
+            <td>Tipo nativo de botón (ignorado cuando se establece <code>href</code>).</td>
           </tr>
           <tr>
             <td><code>disabled</code></td>
             <td><code>boolean</code></td>
             <td><code>false</code></td>
-            <td>Disables interaction and applies reduced opacity.</td>
+            <td>Deshabilita la interacción y aplica opacidad reducida.</td>
           </tr>
         </tbody>
       </table>

@@ -12,52 +12,52 @@ const snippet = `<Input label="Email" type="email" name="email" placeholder="you
 <Input label="Username" name="username" error="This username is already taken." />`;
 ---
 
-<BaseLayout title="Input — Nexo UI Kit" description="Input component types, labels and error state for the Nexo UI Kit.">
+<BaseLayout title="Input — Nexo UI Kit" description="Tipos, etiquetas y estado de error del componente Input de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Input"
-    subtitle="Dark form fields with optional labels, focus ring and inline error messaging."
+    subtitle="Campos de formulario oscuros con etiquetas opcionales, anillo de foco y mensaje de error en línea."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">With label</h2>
+    <h2 class="docs-h2">Con etiqueta</h2>
     <div class="docs-example docs-example-stack" style="max-width: 420px;">
-      <Input label="Full name" name="name" placeholder="Ada Lovelace" />
+      <Input label="Nombre completo" name="name" placeholder="Ada Lovelace" />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Types</h2>
+    <h2 class="docs-h2">Tipos</h2>
     <div class="docs-example docs-example-stack" style="max-width: 420px;">
-      <Input label="Text" type="text" name="text" placeholder="Plain text" />
-      <Input label="Email" type="email" name="email" placeholder="you@example.com" />
-      <Input label="Password" type="password" name="password" placeholder="••••••••" />
-      <Input label="Search" type="search" name="search" placeholder="Search…" />
+      <Input label="Texto" type="text" name="text" placeholder="Texto plano" />
+      <Input label="Correo electrónico" type="email" name="email" placeholder="you@example.com" />
+      <Input label="Contraseña" type="password" name="password" placeholder="••••••••" />
+      <Input label="Búsqueda" type="search" name="search" placeholder="Buscar…" />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Without label</h2>
+    <h2 class="docs-h2">Sin etiqueta</h2>
     <div class="docs-example docs-example-stack" style="max-width: 420px;">
-      <Input name="bare" placeholder="No label" />
-      <Input name="required-field" placeholder="Required field" required />
+      <Input name="bare" placeholder="Sin etiqueta" />
+      <Input name="required-field" placeholder="Campo obligatorio" required />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Error state</h2>
+    <h2 class="docs-h2">Estado de error</h2>
     <div class="docs-example docs-example-stack" style="max-width: 420px;">
       <Input
-        label="Username"
+        label="Nombre de usuario"
         name="username"
-        placeholder="Choose a username"
-        error="This username is already taken."
+        placeholder="Elige un nombre de usuario"
+        error="Este nombre de usuario ya está en uso."
       />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -68,9 +68,9 @@ const snippet = `<Input label="Email" type="email" name="email" placeholder="you
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -78,43 +78,43 @@ const snippet = `<Input label="Email" type="email" name="email" placeholder="you
             <td><code>label</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Optional label rendered above the field.</td>
+            <td>Etiqueta opcional renderizada sobre el campo.</td>
           </tr>
           <tr>
             <td><code>placeholder</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Placeholder text.</td>
+            <td>Texto de marcador de posición.</td>
           </tr>
           <tr>
             <td><code>type</code></td>
             <td><code>'text' | 'email' | 'password' | 'search'</code></td>
             <td><code>'text'</code></td>
-            <td>Native input type.</td>
+            <td>Tipo nativo de input.</td>
           </tr>
           <tr>
             <td><code>name</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Form field name. Also used to derive the id when none is given.</td>
+            <td>Nombre del campo de formulario. También se usa para derivar el id cuando no se proporciona.</td>
           </tr>
           <tr>
             <td><code>id</code></td>
             <td><code>string</code></td>
             <td><code>input-&#123;name&#125;</code></td>
-            <td>Explicit id for the input element.</td>
+            <td>id explícito del elemento input.</td>
           </tr>
           <tr>
             <td><code>required</code></td>
             <td><code>boolean</code></td>
             <td><code>false</code></td>
-            <td>Marks the field as required.</td>
+            <td>Marca el campo como obligatorio.</td>
           </tr>
           <tr>
             <td><code>error</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Error message shown below the field in danger color.</td>
+            <td>Mensaje de error que se muestra debajo del campo en color danger.</td>
           </tr>
         </tbody>
       </table>

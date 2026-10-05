@@ -14,47 +14,47 @@ const snippet = `<Badge variant="cyan">Nuevo</Badge>
 <Badge variant="magenta" dot>Magenta</Badge>`;
 ---
 
-<BaseLayout title="Badge — Nexo UI Kit" description="Badge component variants, sizes and dot indicator for the Nexo UI Kit.">
+<BaseLayout title="Badge — Nexo UI Kit" description="Variantes, tamaños e indicador de punto del componente Badge de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Badge"
-    subtitle="Soft pill labels for status, categories and metadata, with an optional leading dot."
+    subtitle="Etiquetas tipo píldora suaves para estado, categorías y metadatos, con un punto inicial opcional."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Variants</h2>
+    <h2 class="docs-h2">Variantes</h2>
     <div class="docs-example">
       {variants.map((variant) => <Badge variant={variant}>{variant}</Badge>)}
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Sizes</h2>
+    <h2 class="docs-h2">Tamaños</h2>
     <div class="docs-example">
-      <Badge variant="cyan" size="sm">Small</Badge>
-      <Badge variant="cyan" size="md">Medium</Badge>
+      <Badge variant="cyan" size="sm">Pequeño</Badge>
+      <Badge variant="cyan" size="md">Mediano</Badge>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">With dot</h2>
+    <h2 class="docs-h2">Con punto</h2>
     <div class="docs-example">
-      <Badge variant="success" dot>Approved</Badge>
-      <Badge variant="warning" dot>Pending</Badge>
-      <Badge variant="danger" dot>Rejected</Badge>
-      <Badge variant="cyan" size="sm" dot>Live</Badge>
+      <Badge variant="success" dot>Aprobado</Badge>
+      <Badge variant="warning" dot>Pendiente</Badge>
+      <Badge variant="danger" dot>Rechazado</Badge>
+      <Badge variant="cyan" size="sm" dot>En vivo</Badge>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">All variants with dot</h2>
+    <h2 class="docs-h2">Todas las variantes con punto</h2>
     <div class="docs-example">
       {variants.map((variant) => <Badge variant={variant} dot>{variant}</Badge>)}
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -65,9 +65,9 @@ const snippet = `<Badge variant="cyan">Nuevo</Badge>
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -77,19 +77,19 @@ const snippet = `<Badge variant="cyan">Nuevo</Badge>
               <code>'cyan' | 'purple' | 'magenta' | 'success' | 'warning' | 'danger' | 'muted'</code>
             </td>
             <td><code>'cyan'</code></td>
-            <td>Color scheme of the badge.</td>
+            <td>Esquema de color del badge.</td>
           </tr>
           <tr>
             <td><code>size</code></td>
             <td><code>'sm' | 'md'</code></td>
             <td><code>'md'</code></td>
-            <td>Padding and font size.</td>
+            <td>Relleno y tamaño de fuente.</td>
           </tr>
           <tr>
             <td><code>dot</code></td>
             <td><code>boolean</code></td>
             <td><code>false</code></td>
-            <td>Renders a leading status dot that inherits the badge color.</td>
+            <td>Renderiza un punto de estado inicial que hereda el color del badge.</td>
           </tr>
         </tbody>
       </table>

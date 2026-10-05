@@ -14,33 +14,33 @@ const snippet = `<Toast variant="success" title="Project created" message="Publi
 <Toast demo variant="info" title="Inline demo" message="Renders static for documentation." />`;
 ---
 
-<BaseLayout title="Toast — Nexo UI Kit" description="Toast component variants, positions and dismiss behavior for the Nexo UI Kit.">
+<BaseLayout title="Toast — Nexo UI Kit" description="Variantes, posiciones y comportamiento de descarte del componente Toast de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Toast"
-    subtitle="Fixed-position notifications with accent variants, icon cues and a dismiss control."
+    subtitle="Notificaciones de posición fija con variantes de acento, pistas de icono y control de descarte."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Variants</h2>
+    <h2 class="docs-h2">Variantes</h2>
     <div class="docs-example docs-example-stack">
-      <p class="docs-example-label">demo mode — rendered inline for documentation</p>
+      <p class="docs-example-label">modo demo — renderizado en línea para documentación</p>
       <div class="toast-demo-grid">
-        <Toast demo variant="success" title="Project created" message="Your project was published successfully." />
-        <Toast demo variant="warning" title="Storage almost full" message="You have used 85% of your quota." />
-        <Toast demo variant="danger" title="Payment failed" message="Your card was declined. Try another method." />
-        <Toast demo variant="info" title="New version available" message="Update to v2.4.0 to get the latest features." />
+        <Toast demo variant="success" title="Proyecto creado" message="Tu proyecto se publicó correctamente." />
+        <Toast demo variant="warning" title="Almacenamiento casi lleno" message="Has usado el 85% de tu cuota." />
+        <Toast demo variant="danger" title="Pago fallido" message="Tu tarjeta fue rechazada. Prueba con otro método." />
+        <Toast demo variant="info" title="Nueva versión disponible" message="Actualiza a v2.4.0 para obtener las últimas funcionalidades." />
       </div>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Positions</h2>
+    <h2 class="docs-h2">Posiciones</h2>
     <div class="docs-example docs-example-stack">
       <p class="docs-note">
-        The <code class="docs-inline-code">position</code> prop anchors the toast to a viewport corner.
-        The examples below use <code class="docs-inline-code">demo</code> so they render inline; in
-        production they would be <code class="docs-inline-code">position: fixed</code>.
+        La prop <code class="docs-inline-code">position</code> ancla el toast a una esquina del viewport.
+        Los ejemplos siguientes usan <code class="docs-inline-code">demo</code> para renderizarse en línea; en
+        producción serían <code class="docs-inline-code">position: fixed</code>.
       </p>
       {
         positions.map((position) => (
@@ -51,7 +51,7 @@ const snippet = `<Toast variant="success" title="Project created" message="Publi
               position={position}
               variant="info"
               title={`${position} toast`}
-              message="Anchored to this corner when demo is false."
+              message="Anclado a esta esquina cuando demo es false."
             />
           </div>
         ))
@@ -60,17 +60,17 @@ const snippet = `<Toast variant="success" title="Project created" message="Publi
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">With and without message</h2>
+    <h2 class="docs-h2">Con y sin mensaje</h2>
     <div class="docs-example docs-example-stack">
       <div class="toast-demo-grid">
-        <Toast demo variant="success" title="Saved" />
-        <Toast demo variant="info" title="Synced" message="All changes are up to date." />
+        <Toast demo variant="success" title="Guardado" />
+        <Toast demo variant="info" title="Sincronizado" message="Todos los cambios están al día." />
       </div>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -81,9 +81,9 @@ const snippet = `<Toast variant="success" title="Project created" message="Publi
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -91,31 +91,31 @@ const snippet = `<Toast variant="success" title="Project created" message="Publi
             <td><code>variant</code></td>
             <td><code>'success' | 'warning' | 'danger' | 'info'</code></td>
             <td><code>'info'</code></td>
-            <td>Accent color, icon glyph and role (<code>alert</code> for danger, <code>status</code> otherwise).</td>
+            <td>Color de acento, glifo de icono y rol (<code>alert</code> para danger, <code>status</code> en caso contrario).</td>
           </tr>
           <tr>
             <td><code>title</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Bold primary text of the notification.</td>
+            <td>Texto principal en negrita de la notificación.</td>
           </tr>
           <tr>
             <td><code>message</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Optional secondary detail line.</td>
+            <td>Línea de detalle secundaria opcional.</td>
           </tr>
           <tr>
             <td><code>position</code></td>
             <td><code>'top-right' | 'bottom-right' | 'top-left' | 'bottom-left'</code></td>
             <td><code>'top-right'</code></td>
-            <td>Viewport corner used when the toast is fixed-position.</td>
+            <td>Esquina del viewport que se usa cuando el toast tiene posición fija.</td>
           </tr>
           <tr>
             <td><code>demo</code></td>
             <td><code>boolean</code></td>
             <td><code>false</code></td>
-            <td>Switches to <code>position: static</code> so docs pages can lay toasts out inline.</td>
+            <td>Cambia a <code>position: static</code> para que las páginas de documentación puedan mostrar los toasts en línea.</td>
           </tr>
         </tbody>
       </table>

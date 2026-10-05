@@ -19,69 +19,69 @@ const snippet = `<Modal open title="Create project" size="md">
 
 <BaseLayout
   title="Modal — Nexo UI Kit"
-  description="Modal component overlay, sizes and closable behavior for the Nexo UI Kit."
+  description="Overlay, tamaños y comportamiento de cierre del componente Modal de Nexo UI Kit."
 >
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Modal"
-    subtitle="Overlay dialog with backdrop scrim, size variants and an optional close button."
+    subtitle="Diálogo overlay con fondo oscurecido, variantes de tamaño y un botón de cierre opcional."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Live demo</h2>
+    <h2 class="docs-h2">Demo en vivo</h2>
     <div class="docs-example">
-      <Button id="modal-demo-open">Open modal</Button>
+      <Button id="modal-demo-open">Abrir modal</Button>
     </div>
-    <Modal id="modal-demo" title="Live modal demo" size="md">
+    <Modal id="modal-demo" title="Demo en vivo de modal" size="md">
       <p class="modal-demo-text">
-        This modal was opened by the button above. Click the backdrop, the X, or
-        the Close action to dismiss it.
+        Este modal fue abierto por el botón superior. Haz clic en el fondo, en la X o en
+        la acción Cerrar para descartarlo.
       </p>
       <div class="modal-demo-actions">
-        <Button variant="ghost" size="sm" data-nx-modal-close>Close</Button>
-        <Button variant="primary" size="sm">Confirm</Button>
+        <Button variant="ghost" size="sm" data-nx-modal-close>Cerrar</Button>
+        <Button variant="primary" size="sm">Confirmar</Button>
       </div>
     </Modal>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Sizes</h2>
+    <h2 class="docs-h2">Tamaños</h2>
     <div class="docs-example docs-example-stack modal-static">
       <p class="docs-example-label">size="sm" — max-width 400px</p>
-      <Modal open title="Small modal" size="sm" closable={false}>
-        <p class="modal-demo-text">Compact dialog for confirmations and short forms.</p>
+      <Modal open title="Modal pequeño" size="sm" closable={false}>
+        <p class="modal-demo-text">Diálogo compacto para confirmaciones y formularios cortos.</p>
       </Modal>
       <p class="docs-example-label">size="md" — max-width 560px (default)</p>
-      <Modal open title="Medium modal" size="md" closable={false}>
-        <p class="modal-demo-text">Default dialog size for most content.</p>
+      <Modal open title="Modal mediano" size="md" closable={false}>
+        <p class="modal-demo-text">Tamaño de diálogo predeterminado para la mayoría del contenido.</p>
       </Modal>
       <p class="docs-example-label">size="lg" — max-width 720px</p>
-      <Modal open title="Large modal" size="lg" closable={false}>
-        <p class="modal-demo-text">Wide dialog for rich content and multi-column layouts.</p>
+      <Modal open title="Modal grande" size="lg" closable={false}>
+        <p class="modal-demo-text">Diálogo amplio para contenido rico y maquetas multicolumna.</p>
       </Modal>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Closable vs locked</h2>
+    <h2 class="docs-h2">Cerrable vs bloqueado</h2>
     <div class="docs-example modal-static">
       <div class="modal-locked-demo">
-        <p class="docs-example-label">closable={false} — no X button</p>
-        <Modal open title="Locked dialog" size="sm" closable={false}>
-          <p class="modal-demo-text">Use for critical flows that must be confirmed explicitly.</p>
+        <p class="docs-example-label">closable={false} — sin botón X</p>
+        <Modal open title="Diálogo bloqueado" size="sm" closable={false}>
+          <p class="modal-demo-text">Úsalo para flujos críticos que deben confirmarse de forma explícita.</p>
         </Modal>
       </div>
       <div class="modal-locked-demo">
-        <p class="docs-example-label">closable — X button present</p>
-        <Modal open title="Closable dialog" size="sm">
-          <p class="modal-demo-text">Default behavior: the X button dismisses the dialog.</p>
+        <p class="docs-example-label">closable — con botón X presente</p>
+        <Modal open title="Diálogo cerrable" size="sm">
+          <p class="modal-demo-text">Comportamiento predeterminado: el botón X descarta el diálogo.</p>
         </Modal>
       </div>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -92,9 +92,9 @@ const snippet = `<Modal open title="Create project" size="md">
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -102,32 +102,32 @@ const snippet = `<Modal open title="Create project" size="md">
             <td><code>open</code></td>
             <td><code>boolean</code></td>
             <td><code>false</code></td>
-            <td>When false the modal renders with the <code>hidden</code> attribute.</td>
+            <td>Cuando es false, el modal se renderiza con el atributo <code>hidden</code>.</td>
           </tr>
           <tr>
             <td><code>title</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Dialog title rendered in the header bar.</td>
+            <td>Título del diálogo renderizado en la barra de encabezado.</td>
           </tr>
           <tr>
             <td><code>size</code></td>
             <td><code>'sm' | 'md' | 'lg'</code></td>
             <td><code>'md'</code></td>
-            <td>Max width of the panel: 400px, 560px or 720px.</td>
+            <td>Ancho máximo del panel: 400px, 560px o 720px.</td>
           </tr>
           <tr>
             <td><code>closable</code></td>
             <td><code>boolean</code></td>
             <td><code>true</code></td>
-            <td>Shows the X close button in the header.</td>
+            <td>Muestra el botón X de cierre en el encabezado.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="docs-note">
-      A small inline script handles the close button and backdrop clicks via
-      <code class="docs-inline-code">data-*</code> attributes — no framework required.
+      Un pequeño script en línea maneja el botón de cierre y los clics del fondo mediante
+      atributos <code class="docs-inline-code">data-*</code> — no se requiere ningún framework.
     </p>
   </section>
 </BaseLayout>

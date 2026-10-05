@@ -8,88 +8,88 @@ const components = [
   {
     href: '/components/button',
     name: 'Button',
-    description: 'Gradient, outline, ghost and danger actions with three sizes.',
-    badge: 'Actions',
+    description: 'Acciones con variantes gradiente, outline, ghost y danger en tres tamaños.',
+    badge: 'Acciones',
   },
   {
     href: '/components/badge',
     name: 'Badge',
-    description: 'Soft pill labels for status, categories and metadata.',
-    badge: 'Display',
+    description: 'Etiquetas tipo píldora suaves para estado, categorías y metadatos.',
+    badge: 'Visualización',
   },
   {
     href: '/components/card',
     name: 'Card',
-    description: 'Elevated surface container with optional hover glow.',
-    badge: 'Layout',
+    description: 'Contenedor de superficie elevada con resplandor hover opcional.',
+    badge: 'Maquetación',
   },
   {
     href: '/components/input',
     name: 'Input',
-    description: 'Dark form fields with labels, focus ring and error state.',
-    badge: 'Forms',
+    description: 'Campos de formulario oscuros con etiquetas, anillo de foco y estado de error.',
+    badge: 'Formularios',
   },
   {
     href: '/components/search-bar',
     name: 'SearchBar',
-    description: 'Search field with icon and submit button, ready to compose.',
-    badge: 'Forms',
+    description: 'Campo de búsqueda con icono y botón de envío, listo para componer.',
+    badge: 'Formularios',
   },
   {
     href: '/components/section-header',
     name: 'SectionHeader',
-    description: 'Badge, title and subtitle header for page sections.',
-    badge: 'Layout',
+    description: 'Encabezado con badge, título y subtítulo para secciones de página.',
+    badge: 'Maquetación',
   },
   {
     href: '/components/modal',
     name: 'Modal',
-    description: 'Overlay dialog with backdrop scrim, sizes and closable control.',
-    badge: 'Overlay',
+    description: 'Diálogo overlay con fondo oscurecido, tamaños y control de cierre.',
+    badge: 'Superposición',
   },
   {
     href: '/components/toast',
     name: 'Toast',
-    description: 'Fixed notifications with accent variants and dismiss control.',
-    badge: 'Feedback',
+    description: 'Notificaciones fijas con variantes de acento y control de descarte.',
+    badge: 'Retroalimentación',
   },
   {
     href: '/components/tabs',
     name: 'Tabs',
-    description: 'Server-rendered tab list with gradient active underline.',
-    badge: 'Navigation',
+    description: 'Lista de pestañas renderizada en servidor con subrayado activo en degradado.',
+    badge: 'Navegación',
   },
   {
     href: '/components/avatar',
     name: 'Avatar',
-    description: 'Circular image or gradient initials with a neon ring.',
-    badge: 'Display',
+    description: 'Imagen circular o iniciales en degradado con anillo neón.',
+    badge: 'Visualización',
   },
   {
     href: '/components/empty-state',
     name: 'EmptyState',
-    description: 'Centered empty-view placeholder with icon and action slot.',
-    badge: 'Feedback',
+    description: 'Marcador de vista vacía centrado con icono y slot de acción.',
+    badge: 'Retroalimentación',
   },
 ];
 ---
 
-<BaseLayout title="Nexo UI Kit — Design System" description="Nexo UI Kit is the shared design system and Astro component library for Nexo Digital Lab.">
+<BaseLayout title="Nexo UI Kit — Sistema de diseño" description="Nexo UI Kit es el sistema de diseño compartido y la biblioteca de componentes Astro de Nexo Digital Lab.">
   <section class="landing-hero">
-    <Badge variant="cyan" dot>Design System</Badge>
+    <Badge variant="cyan" dot>Sistema de diseño</Badge>
     <h1 class="landing-title nx-gradient-text">Nexo UI Kit</h1>
     <p class="landing-subtitle">
-      The shared design system and Astro component library for the Nexo Digital
-      ecosystem — tokens, primitives and documentation in one place.
+      El sistema de diseño compartido y la biblioteca de componentes Astro del
+      ecosistema Nexo Digital — tokens, primitivas y documentación en un solo lugar.
     </p>
     <div class="landing-actions">
-      <Button href="/components/button" variant="primary" size="lg">View components</Button>
-      <Button href="/tokens" variant="secondary" size="lg">View tokens</Button>
+      <Button href="/components/button" variant="primary" size="lg">Ver componentes</Button>
+      <Button href="/tokens" variant="secondary" size="lg">Ver tokens</Button>
     </div>
   </section>
 
   <section class="landing-components">
-    <h2 class="landing-section-title">Components</h2>
+    <h2 class="landing-section-title">Componentes</h2>
     <div class="landing-grid">
       {
         components.map((item) => (

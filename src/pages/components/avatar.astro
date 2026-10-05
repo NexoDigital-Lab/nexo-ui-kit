@@ -14,15 +14,15 @@ const snippet = `<Avatar name="Ada Lovelace" />
 <Avatar name="Maximiliano Fernández" size="xl" />`;
 ---
 
-<BaseLayout title="Avatar — Nexo UI Kit" description="Avatar component sizes, image source and initials fallback for the Nexo UI Kit.">
+<BaseLayout title="Avatar — Nexo UI Kit" description="Tamaños, origen de imagen y reserva de iniciales del componente Avatar de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Avatar"
-    subtitle="Circular user image with a neon ring, or a gradient initials fallback when no src is given."
+    subtitle="Imagen de usuario circular con anillo neón, o reserva de iniciales en degradado cuando no se indica src."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Sizes</h2>
+    <h2 class="docs-h2">Tamaños</h2>
     <div class="docs-example docs-example-center">
       {sizes.map((size) => <Avatar name="Nexo Digital" size={size} />)}
     </div>
@@ -32,17 +32,17 @@ const snippet = `<Avatar name="Ada Lovelace" />
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">With image</h2>
+    <h2 class="docs-h2">Con imagen</h2>
     <div class="docs-example docs-example-center">
-      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Nexo teammate" name="Nexo Digital" size="sm" />
-      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Nexo teammate" name="Nexo Digital" size="md" />
-      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Nexo teammate" name="Nexo Digital" size="lg" />
-      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Nexo teammate" name="Nexo Digital" size="xl" />
+      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Miembro del equipo Nexo" name="Nexo Digital" size="sm" />
+      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Miembro del equipo Nexo" name="Nexo Digital" size="md" />
+      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Miembro del equipo Nexo" name="Nexo Digital" size="lg" />
+      <Avatar src="https://i.pravatar.cc/150?u=nexo" alt="Miembro del equipo Nexo" name="Nexo Digital" size="xl" />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Initials fallback</h2>
+    <h2 class="docs-h2">Reserva de iniciales</h2>
     <div class="docs-example docs-example-center">
       <Avatar name="Ada" />
       <Avatar name="Ada Lovelace" />
@@ -50,12 +50,12 @@ const snippet = `<Avatar name="Ada Lovelace" />
       <Avatar name="Maximiliano Fernández de la Cruz" size="lg" />
     </div>
     <p class="docs-note">
-      Initials take the first letter of each word, max 2 characters, uppercased.
+      Las iniciales toman la primera letra de cada palabra, máximo 2 caracteres, en mayúsculas.
     </p>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -66,9 +66,9 @@ const snippet = `<Avatar name="Ada Lovelace" />
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -76,25 +76,25 @@ const snippet = `<Avatar name="Ada Lovelace" />
             <td><code>src</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Image URL. When omitted, the initials fallback is rendered.</td>
+            <td>URL de la imagen. Si se omite, se renderiza la reserva de iniciales.</td>
           </tr>
           <tr>
             <td><code>alt</code></td>
             <td><code>string</code></td>
             <td><code>name</code></td>
-            <td>Alt text for the image (ignored when using the fallback).</td>
+            <td>Texto alternativo de la imagen (ignorado al usar la reserva).</td>
           </tr>
           <tr>
             <td><code>name</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Used to derive initials when no image source is provided.</td>
+            <td>Se usa para derivar las iniciales cuando no se proporciona imagen.</td>
           </tr>
           <tr>
             <td><code>size</code></td>
             <td><code>'sm' | 'md' | 'lg' | 'xl'</code></td>
             <td><code>'md'</code></td>
-            <td>Diameter: 32px, 40px, 56px or 80px.</td>
+            <td>Diámetro: 32px, 40px, 56px u 80px.</td>
           </tr>
         </tbody>
       </table>

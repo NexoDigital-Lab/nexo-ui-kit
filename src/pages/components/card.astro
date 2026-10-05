@@ -15,31 +15,31 @@ const snippet = `<Card>
 </Card>`;
 ---
 
-<BaseLayout title="Card — Nexo UI Kit" description="Card component padding, hover state and usage for the Nexo UI Kit.">
+<BaseLayout title="Card — Nexo UI Kit" description="Relleno, estado hover y uso del componente Card de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="Card"
-    subtitle="Elevated surface container with optional hover glow for interactive content."
+    subtitle="Contenedor de superficie elevada con resplandor hover opcional para contenido interactivo."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">Default card</h2>
+    <h2 class="docs-h2">Tarjeta predeterminada</h2>
     <div class="docs-example docs-example-stack">
       <Card>
-        <Badge variant="purple" size="sm">Layout</Badge>
-        <h3 class="card-demo-title">Card title</h3>
+        <Badge variant="purple" size="sm">Maquetación</Badge>
+        <h3 class="card-demo-title">Título de la tarjeta</h3>
         <p class="card-demo-body">
-          Cards rest on the card surface with a subtle border. Hover lifts the
-          surface, brightens the border and adds a shadow.
+          Las tarjetas descansan sobre la superficie de la tarjeta con un borde sutil.
+          El hover eleva la superficie, aclara el borde y añade una sombra.
         </p>
-        <Button variant="secondary" size="sm">Learn more</Button>
+        <Button variant="secondary" size="sm">Saber más</Button>
       </Card>
     </div>
-    <p class="docs-note">Hover the card above to see the elevated state.</p>
+    <p class="docs-note">Pasa el cursor sobre la tarjeta superior para ver el estado elevado.</p>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Padding</h2>
+    <h2 class="docs-h2">Relleno</h2>
     <div class="docs-example">
       <Card padding="md">
         <p class="card-demo-body">padding="md"</p>
@@ -51,16 +51,16 @@ const snippet = `<Card>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Hover disabled</h2>
+    <h2 class="docs-h2">Hover deshabilitado</h2>
     <div class="docs-example">
       <Card hover={false}>
-        <p class="card-demo-body">Static card — hover disabled</p>
+        <p class="card-demo-body">Tarjeta estática — hover deshabilitado</p>
       </Card>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -71,9 +71,9 @@ const snippet = `<Card>
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -81,13 +81,13 @@ const snippet = `<Card>
             <td><code>hover</code></td>
             <td><code>boolean</code></td>
             <td><code>true</code></td>
-            <td>Enables hover elevation: lighter surface, glow border and shadow.</td>
+            <td>Activa la elevación al pasar el cursor: superficie más clara, borde con resplandor y sombra.</td>
           </tr>
           <tr>
             <td><code>padding</code></td>
             <td><code>'md' | 'lg'</code></td>
             <td><code>'md'</code></td>
-            <td>Inner padding of the card.</td>
+            <td>Relleno interior de la tarjeta.</td>
           </tr>
         </tbody>
       </table>

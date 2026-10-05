@@ -18,65 +18,65 @@ const snippet = `<EmptyState
 />`;
 ---
 
-<BaseLayout title="EmptyState — Nexo UI Kit" description="EmptyState component icon, title, message and action slot examples for the Nexo UI Kit.">
+<BaseLayout title="EmptyState — Nexo UI Kit" description="Ejemplos de icono, título, mensaje y slot de acción del componente EmptyState de Nexo UI Kit.">
   <SectionHeader
-    badge="Components"
+    badge="Componentes"
     title="EmptyState"
-    subtitle="Centered placeholder for empty lists and zero-data views, with an icon circle and optional action."
+    subtitle="Marcador centrado para listas vacías y vistas sin datos, con un círculo de icono y una acción opcional."
   />
 
   <section class="docs-section">
-    <h2 class="docs-h2">With icon and action</h2>
+    <h2 class="docs-h2">Con icono y acción</h2>
     <div class="docs-example docs-example-stack">
       <EmptyState
         icon="🚀"
-        title="No projects yet"
-        message="Create your first project to start collaborating with your team."
+        title="Aún no hay proyectos"
+        message="Crea tu primer proyecto para empezar a colaborar con tu equipo."
       >
-        <Button slot="action" variant="primary">Create project</Button>
-        <Button slot="action" variant="secondary" size="sm">Import from Git</Button>
+        <Button slot="action" variant="primary">Crear proyecto</Button>
+        <Button slot="action" variant="secondary" size="sm">Importar desde Git</Button>
       </EmptyState>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Without action</h2>
+    <h2 class="docs-h2">Sin acción</h2>
     <div class="docs-example docs-example-stack">
       <EmptyState
         icon="🔍"
-        title="No results"
-        message="Try adjusting your filters or check back later."
+        title="Sin resultados"
+        message="Intenta ajustar los filtros o vuelve más tarde."
       />
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Without icon</h2>
+    <h2 class="docs-h2">Sin icono</h2>
     <div class="docs-example docs-example-stack">
       <EmptyState
-        title="Nothing here yet"
-        message="Content will appear as soon as it is available."
+        title="Aún no hay nada aquí"
+        message="El contenido aparecerá en cuanto esté disponible."
       >
-        <Button slot="action" variant="ghost" size="sm">Refresh</Button>
+        <Button slot="action" variant="ghost" size="sm">Actualizar</Button>
       </EmptyState>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Custom icon slot</h2>
+    <h2 class="docs-h2">Slot de icono personalizado</h2>
     <div class="docs-example docs-example-stack">
       <EmptyState
-        title="Inbox zero"
-        message="You are all caught up. New notifications will show up here."
+        title="Bandeja al día"
+        message="Estás al día. Las nuevas notificaciones aparecerán aquí."
       >
         <span slot="icon" class="empty-state-custom-icon" aria-hidden="true">✦</span>
-        <Button slot="action" variant="secondary" size="sm">View archive</Button>
+        <Button slot="action" variant="secondary" size="sm">Ver archivo</Button>
       </EmptyState>
     </div>
   </section>
 
   <section class="docs-section">
-    <h2 class="docs-h2">Usage</h2>
+    <h2 class="docs-h2">Uso</h2>
     <pre class="docs-code"><code>{snippet}</code></pre>
   </section>
 
@@ -87,9 +87,9 @@ const snippet = `<EmptyState
         <thead>
           <tr>
             <th>Prop</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Tipo</th>
+            <th>Predeterminado</th>
+            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
@@ -97,26 +97,26 @@ const snippet = `<EmptyState
             <td><code>title</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Display-font heading for the empty state.</td>
+            <td>Encabezado con tipografía display para el estado vacío.</td>
           </tr>
           <tr>
             <td><code>message</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Supporting text, capped at 420px width.</td>
+            <td>Texto de apoyo, limitado a 420px de ancho.</td>
           </tr>
           <tr>
             <td><code>icon</code></td>
             <td><code>string</code></td>
             <td>—</td>
-            <td>Emoji or short text shown inside the 72px icon circle.</td>
+            <td>Emoji o texto corto que se muestra dentro del círculo de icono de 72px.</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="docs-note">
-      Named slots: <code class="docs-inline-code">icon</code> replaces the icon circle content,
-      <code class="docs-inline-code">action</code> renders the optional centered action area.
+      Slots con nombre: <code class="docs-inline-code">icon</code> reemplaza el contenido del círculo de icono,
+      <code class="docs-inline-code">action</code> renderiza el área de acción centrada opcional.
     </p>
   </section>
 </BaseLayout>

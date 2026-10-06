@@ -140,6 +140,112 @@
   --nx-z-toast: 400;
 }
 
+/* --------------------------------------------------------------------------
+   Light theme
+   Dark stays the default in :root. Two mechanisms, same values:
+   - prefers-color-scheme drives automatic OS-following (excludes data-theme='dark').
+   - [data-theme='light'] forces light even when the OS is dark.
+   data-theme='dark' forces dark: the media query excludes it and no light
+   override applies to it.
+   Override ONLY theme-dependent tokens; brand palette, typography, spacing,
+   radius, motion, layout and z-index stay shared.
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    /* Surfaces */
+    --nx-bg-primary: #fafafc;
+    --nx-bg-secondary: #f1f1f6;
+    --nx-bg-card: #ffffff;
+    --nx-bg-card-hover: #f4f4f8;
+    --nx-bg-elevated: #ffffff;
+
+    /* Borders */
+    --nx-border: rgba(80, 60, 140, 0.18);
+    --nx-border-glow: rgba(0, 180, 200, 0.45);
+    --nx-border-strong: rgba(80, 60, 140, 0.35);
+
+    /* Text */
+    --nx-text-primary: #0a0a0f;
+    --nx-text-secondary: #3c3c4c;
+    --nx-text-muted: #6c6c82;
+    /* Inverse sits on brand gradients, which stay bright in light mode;
+       dark text keeps the same contrast dark mode already relies on. */
+    --nx-text-inverse: #0a0a0f;
+
+    /* Soft brand variants (darkened for readability on light surfaces) */
+    --nx-cyan-soft: #0891b2;
+    --nx-purple-soft: #7c3aed;
+    --nx-magenta-soft: #db2777;
+    --nx-indigo-soft: #4f46e5;
+
+    /* Semantic (darkened for light-bg contrast) */
+    --nx-success: #16a34a;
+    --nx-warning: #d97706;
+    --nx-danger: #dc2626;
+    --nx-info: #2563eb;
+
+    /* Shadows (lighter) */
+    --nx-shadow-card: 0 4px 20px rgba(20, 10, 60, 0.08);
+    --nx-shadow-card-hover: 0 8px 28px rgba(20, 10, 60, 0.12);
+    --nx-shadow-glow-cyan: 0 0 18px rgba(0, 245, 255, 0.35);
+    --nx-shadow-glow-purple: 0 0 18px rgba(168, 85, 247, 0.35);
+
+    /* Subtle gradient — alpha raised so it stays visible on light bg */
+    --nx-gradient-subtle: linear-gradient(
+      135deg,
+      rgba(0, 245, 255, 0.12),
+      rgba(168, 85, 247, 0.12)
+    );
+  }
+}
+
+:root[data-theme='light'] {
+  /* Surfaces */
+  --nx-bg-primary: #fafafc;
+  --nx-bg-secondary: #f1f1f6;
+  --nx-bg-card: #ffffff;
+  --nx-bg-card-hover: #f4f4f8;
+  --nx-bg-elevated: #ffffff;
+
+  /* Borders */
+  --nx-border: rgba(80, 60, 140, 0.18);
+  --nx-border-glow: rgba(0, 180, 200, 0.45);
+  --nx-border-strong: rgba(80, 60, 140, 0.35);
+
+  /* Text */
+  --nx-text-primary: #0a0a0f;
+  --nx-text-secondary: #3c3c4c;
+  --nx-text-muted: #6c6c82;
+  /* Inverse sits on brand gradients, which stay bright in light mode;
+     dark text keeps the same contrast dark mode already relies on. */
+  --nx-text-inverse: #0a0a0f;
+
+  /* Soft brand variants (darkened for readability on light surfaces) */
+  --nx-cyan-soft: #0891b2;
+  --nx-purple-soft: #7c3aed;
+  --nx-magenta-soft: #db2777;
+  --nx-indigo-soft: #4f46e5;
+
+  /* Semantic (darkened for light-bg contrast) */
+  --nx-success: #16a34a;
+  --nx-warning: #d97706;
+  --nx-danger: #dc2626;
+  --nx-info: #2563eb;
+
+  /* Shadows (lighter) */
+  --nx-shadow-card: 0 4px 20px rgba(20, 10, 60, 0.08);
+  --nx-shadow-card-hover: 0 8px 28px rgba(20, 10, 60, 0.12);
+  --nx-shadow-glow-cyan: 0 0 18px rgba(0, 245, 255, 0.35);
+  --nx-shadow-glow-purple: 0 0 18px rgba(168, 85, 247, 0.35);
+
+  /* Subtle gradient — alpha raised so it stays visible on light bg */
+  --nx-gradient-subtle: linear-gradient(
+    135deg,
+    rgba(0, 245, 255, 0.12),
+    rgba(168, 85, 247, 0.12)
+  );
+}
+
 @media (max-width: 768px) {
   :root {
     --nx-section-pad-y: 4rem;

@@ -21,7 +21,7 @@ const glowSnippet = `<GlowOrb size="lg" variant="cyan" intensity="subtle" />
 </div>`;
 
 const particleSnippet = `<div style="position: relative; height: 400px;">
-  <ParticleField density={0.00004} speed={0.3} />
+  <ParticleField density={0.00018} speed={0.3} />
 </div>`;
 
 const glassSnippet = `.nx-glass-panel {
@@ -112,7 +112,7 @@ const glassSnippet = `.nx-glass-panel {
     <div class="docs-example docs-example-stack">
       <p class="docs-example-label">Demo en vivo</p>
       <div class="particle-box">
-        <ParticleField />
+        <ParticleField density={0.00018} />
       </div>
       <p class="docs-note">
         Red de puntos conectados por líneas cuando están cerca. El script respeta
@@ -205,7 +205,12 @@ const glassSnippet = `.nx-glass-panel {
             <td><code>density</code></td>
             <td><code>number</code></td>
             <td><code>0.00004</code></td>
-            <td>Partículas por píxel cuadrado del área del canvas.</td>
+            <td>
+              Partículas por píxel cuadrado del área del canvas. Los demos de esta
+              página pasan <code>0.00018</code> explícitamente para que la red sea
+              visible; el valor por defecto del componente se mantiene en
+              <code>0.00004</code>.
+            </td>
           </tr>
           <tr>
             <td><code>speed</code></td>

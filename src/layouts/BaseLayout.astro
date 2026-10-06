@@ -45,6 +45,24 @@ const hasSidebar = Astro.slots.has('sidebar');
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      // Aplicar el tema guardado (o el del sistema) antes del primer pintado
+      // para evitar un destello del tema incorrecto.
+      (function () {
+        try {
+          var stored = localStorage.getItem('nx-theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (error) {
+          // localStorage no disponible (modo privado): mantener el tema por defecto.
+        }
+      })();
+    </script>
   </head>
   <body>
     <nav class="docs-nav" aria-label="Principal">
@@ -59,6 +77,9 @@ const hasSidebar = Astro.slots.has('sidebar');
               {componentLinks.map((link) => <a href={link.href}>{link.label}</a>)}
             </div>
           </details>
+          <button type="button" class="docs-theme-toggle" data-nx-theme-toggle aria-label="Cambiar tema">
+            Tema
+          </button>
         </div>
       </div>
     </nav>
@@ -83,5 +104,25 @@ const hasSidebar = Astro.slots.has('sidebar');
         </p>
       </div>
     </footer>
+
+    <script>
+      // Alterna entre tema claro y oscuro y persiste la elección.
+      const STORAGE_KEY = 'nx-theme';
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>('[data-nx-theme-toggle]');
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+          const next = current === 'light' ? 'dark' : 'light';
+          root.setAttribute('data-theme', next);
+          try {
+            localStorage.setItem(STORAGE_KEY, next);
+          } catch {
+            // localStorage no disponible: el cambio sigue visible en esta sesión.
+          }
+        });
+      }
+    </script>
   </body>
 </html>

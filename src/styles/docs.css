@@ -105,6 +105,30 @@
   color: var(--nx-cyan);
 }
 
+.docs-theme-toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--nx-border);
+  border-radius: var(--nx-radius-full);
+  padding: var(--nx-space-2) var(--nx-space-4);
+  color: var(--nx-text-secondary);
+  font-family: inherit;
+  font-size: var(--nx-text-sm);
+  font-weight: var(--nx-weight-medium);
+  cursor: pointer;
+  transition:
+    color var(--nx-duration-fast) var(--nx-ease),
+    border-color var(--nx-duration-fast) var(--nx-ease),
+    background var(--nx-duration-fast) var(--nx-ease);
+}
+
+.docs-theme-toggle:hover,
+.docs-theme-toggle:focus-visible {
+  color: var(--nx-cyan);
+  border-color: var(--nx-border-glow);
+  background: color-mix(in srgb, var(--nx-cyan) 8%, transparent);
+}
+
 .docs-body {
   display: flex;
   align-items: flex-start;

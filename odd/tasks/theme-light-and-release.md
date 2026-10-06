@@ -48,10 +48,15 @@ Direct commits on master (repo convention).
 - curl/light-scheme check of live site after push (structural: data-theme script present).
 
 ## Progress
-- T1: pending
-- T2: pending
-- T3: pending
-- T4: blocked on npm auth
+- T1: **done** — light theme tokens (dual mechanism: prefers-color-scheme + data-theme), docs theme toggle with localStorage, hard-coded dark audit (docs.css clean, no component edits needed). Commit `251bca8`.
+- T2: **done** — ParticleField demo density 0.00018 on both instances in background.astro. Commit `251bca8`.
+- T3: **done** — pushed `a1af515..251bca8` to origin/master; Vercel auto-deployed (deployment nexo-ui-qjw82kc0b, Ready); live site serves theme toggle.
+- T4: **blocked on npm auth** — npm whoami ENEEDAUTH, no token in ~/.npmrc, @nexodigital/ui-kit E404 on registry. User must `npm login` or set NPM_TOKEN before publish.
+
+## Work-unit commits
+- `251bca8` feat: add light theme tokens, docs theme toggle, and denser ParticleField demo (T1+T2, 5 files, 238+/3-)
+
+## Feature status: T1-T3 COMPLETE, T4 BLOCKED ON NPM AUTH
 
 ## Notes
 - Light palette direction: near-white surfaces (#fafafc / #ffffff cards), dark text (#0a0a0f primary), slightly stronger borders, lighter shadows, darkened soft-brand and semantic tokens for contrast on light backgrounds. Brand gradients stay colorful.

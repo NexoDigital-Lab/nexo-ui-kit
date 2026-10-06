@@ -27,7 +27,7 @@ OUT:
 - [ ] T1: Light theme tokens + hard-coded dark fixes + docs nav theme toggle.
 - [ ] T2: ParticleField demo density bump (both instances in background.astro).
 - [ ] T3: Push master to GitHub; confirm Vercel redeploy.
-- [ ] T4: npm publish `@nexodigital/ui-kit` — BLOCKED on npm auth (user must `npm login` or set NPM_TOKEN).
+- [x] T4: npm publish `@nexodigital/ui-kit` — published 0.1.0 public, tag latest.
 
 ## Line forecast
 T1+T2: ~100-250 authored lines (token block + small fixes + toggle + density). Under 400 heuristic.
@@ -51,12 +51,13 @@ Direct commits on master (repo convention).
 - T1: **done** — light theme tokens (dual mechanism: prefers-color-scheme + data-theme), docs theme toggle with localStorage, hard-coded dark audit (docs.css clean, no component edits needed). Commit `251bca8`.
 - T2: **done** — ParticleField demo density 0.00018 on both instances in background.astro. Commit `251bca8`.
 - T3: **done** — pushed `a1af515..251bca8` to origin/master; Vercel auto-deployed (deployment nexo-ui-qjw82kc0b, Ready); live site serves theme toggle.
-- T4: **blocked on npm auth** — npm whoami ENEEDAUTH, no token in ~/.npmrc, @nexodigital/ui-kit E404 on registry. User must `npm login` or set NPM_TOKEN before publish.
+- T4: **done** — `@nexodigital/ui-kit@0.1.0` published to npm with `--access public` (tag latest). Org `nexodigital` existed with a `0.0.0-stage` placeholder; 0.1.0 propagated and is now latest. README updated: npm install instructions, themes section, badges, completed next steps removed. Commit `93f424e`.
 
 ## Work-unit commits
 - `251bca8` feat: add light theme tokens, docs theme toggle, and denser ParticleField demo (T1+T2, 5 files, 238+/3-)
+- `93f424e` docs: update README for npm publish, light mode, and removed completed next steps
 
-## Feature status: T1-T3 COMPLETE, T4 BLOCKED ON NPM AUTH
+## Feature status: COMPLETE (T1-T4)
 
 ## Notes
 - Light palette direction: near-white surfaces (#fafafc / #ffffff cards), dark text (#0a0a0f primary), slightly stronger borders, lighter shadows, darkened soft-brand and semantic tokens for contrast on light backgrounds. Brand gradients stay colorful.

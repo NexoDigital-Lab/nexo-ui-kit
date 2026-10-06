@@ -38,7 +38,7 @@ const Element = href ? 'a' : 'button';
     justify-content: center;
     gap: var(--nx-space-2);
     border-radius: var(--nx-radius-full);
-    border: 1px solid transparent;
+    border: 0;
     font-family: var(--nx-font-body);
     font-weight: var(--nx-weight-semibold);
     line-height: 1.2;
@@ -92,8 +92,8 @@ const Element = href ? 'a' : 'button';
   }
 
   .v-secondary {
+    border: 1px solid var(--nx-border-glow);
     background: transparent;
-    border-color: var(--nx-border-glow);
     color: var(--nx-cyan);
   }
 

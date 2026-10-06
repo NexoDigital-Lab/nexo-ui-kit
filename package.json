@@ -1,7 +1,7 @@
 {
   "name": "@nexodigital/ui-kit",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nexo UI Kit — Design system y componentes Astro para el ecosistema Nexo Digital",
   "keywords": [
     "nexo",

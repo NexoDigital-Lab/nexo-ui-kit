@@ -1,8 +1,19 @@
 # Nexo UI Kit
 
+[![npm](https://img.shields.io/npm/v/@nexodigital/ui-kit.svg)](https://www.npmjs.com/package/@nexodigital/ui-kit)
+[![license](https://img.shields.io/npm/l/@nexodigital/ui-kit.svg)](./LICENSE)
+
 Sistema de diseño y componentes Astro para el ecosistema **Nexo Digital Lab**. Tokens de diseño como fuente única de verdad y componentes independientes, sin ataduras a Prisma, Supabase ni la app de Nexo Digital.
 
 ## Inicio rápido
+
+### Como paquete npm (recomendado)
+
+```bash
+npm install @nexodigital/ui-kit
+```
+
+### Desde el repositorio
 
 ```bash
 git clone https://github.com/NexoDigital-Lab/nexo-ui-kit.git
@@ -19,30 +30,34 @@ Demo en producción: https://nexo-ui-kit-chi.vercel.app
 
 ### Tokens (siempre)
 
-Copia `src/styles/tokens.css` o impórtalo como CSS global. Todos los valores visuales del kit se resuelven con variables `--nx-*`.
+Todos los valores visuales del kit se resuelven con variables `--nx-*`. Importalo como CSS global:
 
 ```css
-@import 'path/to/nexo-ui-kit/src/styles/tokens.css';
+@import '@nexodigital/ui-kit/tokens.css';
 ```
 
 ### Componentes
 
-Hoy el consumo es **copiar y pegar** de los `.astro` de `src/components/`. No dependen de nada más que los tokens:
-
-1. Copia el componente (p. ej. `Button.astro`) a tu proyecto
-2. Asegúrate de que `tokens.css` esté cargado
-3. Impórtalo y úsalo
+Los componentes son `.astro` standalone que solo dependen de los tokens:
 
 ```astro
 ---
-import Button from '../components/Button.astro';
+import Button from '@nexodigital/ui-kit/Button';
 ---
 
 <Button variant="primary" href="/empleos">Ver empleos</Button>
 <Button variant="secondary" size="sm">Cancelar</Button>
 ```
 
-Cuando el kit madure se publicará como paquete npm (`@nexodigital/ui-kit`) y el copiar y pegar quedará para casos extremos.
+También puedes copiar y pegar los `.astro` de `src/components/` si prefieres no depender del paquete — no tienen más dependencias que los tokens.
+
+### Temas
+
+El kit es **dark-first** pero soporta light mode. Los tokens se resuelven automáticamente con `prefers-color-scheme` del sistema, o puedes forzarlo con `data-theme` en `<html>`:
+
+```html
+<html data-theme="light">  <!-- o "dark" -->
+```
 
 ## Componentes
 
@@ -100,7 +115,7 @@ src/
 - **Sin hex hard-coded** en componentes — todo pasa por `--nx-*`
 - **Sin dependencias de app** — nada de Prisma, Supabase ni tipos de Nexo Digital
 - **Astro scoped styles** — un `.astro` = un componente autocontenido
-- **Dark theme primero** — el ecosistema Nexo es dark; light mode no está en scope v0
+- **Dark theme primero** — el dark es el default de `:root`; light mode se resuelve con `prefers-color-scheme` o `data-theme="light"`
 
 ## Desarrollo
 
@@ -109,11 +124,7 @@ src/
 | `npm run dev` | Dev server con HMR |
 | `npm run build` | Build estático a `dist/` |
 | `npm run preview` | Preview del build |
-
-## Próximos pasos
-
-- [ ] Publicar como `@nexodigital/ui-kit` en npm
-- [ ] Modo light (bajo prioridad)
+| `npm run tokens:sync` | Sincroniza tokens hacia Nexo-Digital |
 
 ## Licencia
 
